@@ -142,6 +142,8 @@ Bu dosya `todo.json` kaynağından otomatik olarak üretilmektedir. `scripts/upd
 - [x] **14. AdminMiddleware: role/permission-based** - Make `AdminMiddleware` use role/permission checks (Spatie) and gracefully fallback to `is_admin` property.
 - [x] **15. Spatie permissions: seeders** - Add seeder `PermissionSeeder` to create roles/permissions and assign to first user (run during migrations/seeds).
 - [x] **16. config/adminlte.php: richer menu** - Update `config/adminlte.php` with a richer menu and user settings.
+- [x] **17. Create admin user** - Create admin user 'admin' with full permissions and profile fields.
+- [x] **18. Add auth & profile pages** - Add login, logout, forgot password, profile show/edit pages and routes.
 
 
 <!-- TODOS-END -->
