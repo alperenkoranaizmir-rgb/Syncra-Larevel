@@ -42,4 +42,6 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::get('roles/search', [App\Http\Controllers\Admin\RoleController::class, 'search'])->name('admin.roles.search');
     // User roles for preselection
     Route::get('users/{user}/roles', [App\Http\Controllers\Admin\RoleController::class, 'userRoles'])->name('admin.users.roles');
+    // Create role (ajax)
+    Route::post('roles', [App\Http\Controllers\Admin\RoleController::class, 'store'])->name('admin.roles.store');
 });

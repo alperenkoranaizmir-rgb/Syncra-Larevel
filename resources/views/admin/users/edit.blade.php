@@ -21,11 +21,14 @@
       @if(!empty($roles))
         <div class="form-group">
           <label>Roller</label>
-          <select name="roles[]" class="form-control roles-select" multiple data-ajax-url="{{ url('/admin/roles/search') }}" data-preload-url="{{ url('/admin/users/'.$user->id.'/roles') }}" data-placeholder="Roller seçin">
-            @foreach($roles as $r)
-              <option value="{{ $r }}" {{ (method_exists($user, 'getRoleNames') && $user->getRoleNames()->contains($r)) || in_array($r, old('roles', [])) ? 'selected' : '' }}>{{ $r }}</option>
-            @endforeach
-          </select>
+          <div class="d-flex align-items-center">
+            <select name="roles[]" class="form-control roles-select" multiple data-ajax-url="{{ url('/admin/roles/search') }}" data-preload-url="{{ url('/admin/users/'.$user->id.'/roles') }}" data-placeholder="Roller seçin">
+              @foreach($roles as $r)
+                <option value="{{ $r }}" {{ (method_exists($user, 'getRoleNames') && $user->getRoleNames()->contains($r)) || in_array($r, old('roles', [])) ? 'selected' : '' }}>{{ $r }}</option>
+              @endforeach
+            </select>
+            <button type="button" class="btn btn-outline-secondary ml-2 create-role-btn" data-toggle="modal" data-target="#roleModal">Yeni Rol</button>
+          </div>
           <small class="form-text text-muted">Mevcut roller seçili olarak gelir.</small>
         </div>
       @endif
@@ -35,6 +38,31 @@
   </div>
 </div>
 @endsection
+@push('scripts')
+<!-- Role create modal (shared with create view) -->
+<div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Yeni Rol Oluştur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Kapat"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <form id="role-create-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Rol Adı</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+          <button type="submit" class="btn btn-primary">Oluştur</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endpush
 @extends('vendor.adminlte.layouts.admin')
 
 @section('content')

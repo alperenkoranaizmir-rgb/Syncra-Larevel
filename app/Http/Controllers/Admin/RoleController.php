@@ -46,4 +46,16 @@ class RoleController extends Controller
 
         return response()->json(['results' => $items]);
     }
+
+    // Create a new role (AJAX) — returns created role in Select2 format
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|max:100|unique:roles,name'
+        ]);
+
+        $role = Role::create(['name' => $request->input('name')]);
+
+        return response()->json(['id' => $role->name, 'text' => $role->name]);
+    }
 }

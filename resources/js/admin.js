@@ -9,6 +9,40 @@ import '../css/select2-admin.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     try {
+        // Ensure CSRF token is sent with AJAX requests
+        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        if (token) {
+            $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': token } });
+        }
+
+        // Handle role create modal form submit (inline role creation)
+        $(document).on('submit', '#role-create-form', function (e) {
+            e.preventDefault();
+            const $form = $(this);
+            const $modal = $form.closest('.modal');
+            const name = $form.find('input[name="name"]').val();
+            if (!name) return;
+            $.post('/admin/roles', { name: name })
+                .done(function (data) {
+                    // Add to all role selects on the page
+                    $('.roles-select').each(function () {
+                        const $sel = $(this);
+                        const option = new Option(data.text, data.id, true, true);
+                        $sel.append(option).trigger('change');
+                    });
+                    $modal.modal('hide');
+                    $form[0].reset();
+                })
+                .fail(function (xhr) {
+                    let msg = 'Rol oluşturulamadı';
+                    if (xhr && xhr.responseJSON && xhr.responseJSON.errors) {
+                        const errs = xhr.responseJSON.errors;
+                        msg = Object.values(errs).flat().join('\n');
+                    }
+                    alert(msg);
+                });
+        });
+
         if (typeof $ !== 'undefined' && $.fn && $.fn.select2) {
             $('.roles-select').each(function () {
                 const $el = $(this);
