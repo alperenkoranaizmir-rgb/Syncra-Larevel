@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +21,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $credentials = $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
@@ -51,7 +52,7 @@ class AuthController extends Controller
 
     public function sendReset(Request $request)
     {
-        $request->validate(['email' => 'required|email']);
+        $this->validate($request, ['email' => 'required|email']);
         $status = Password::sendResetLink($request->only('email'));
         return back()->with('status', __($status));
     }
@@ -66,7 +67,7 @@ class AuthController extends Controller
 
     public function reset(Request $request)
     {
-        $request->validate([
+        $this->validate($request, [
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8|confirmed',

@@ -123,4 +123,35 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Register Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | The service providers listed here will be automatically loaded on the
+    | request to your application. We register a minimal set required for
+    | database, views, sessions, routing and authentication to work.
+    |
+    */
+    'providers' => [
+        \Illuminate\Auth\AuthServiceProvider::class,
+        \Illuminate\Hashing\HashServiceProvider::class,
+        \Illuminate\Broadcasting\BroadcastServiceProvider::class,
+        \Illuminate\Bus\BusServiceProvider::class,
+        \Illuminate\Cache\CacheServiceProvider::class,
+        \Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+        \Illuminate\Database\DatabaseServiceProvider::class,
+        \Illuminate\Encryption\EncryptionServiceProvider::class,
+        \Illuminate\Cookie\CookieServiceProvider::class,
+        \Illuminate\Filesystem\FilesystemServiceProvider::class,
+        \Illuminate\Mail\MailServiceProvider::class,
+        \Illuminate\Pagination\PaginationServiceProvider::class,
+        \Illuminate\Queue\QueueServiceProvider::class,
+        \Illuminate\Session\SessionServiceProvider::class,
+        \Illuminate\Translation\TranslationServiceProvider::class,
+        \Illuminate\Validation\ValidationServiceProvider::class,
+        \Illuminate\View\ViewServiceProvider::class,
+        \Illuminate\Routing\RoutingServiceProvider::class,
+    ],
+
 ];

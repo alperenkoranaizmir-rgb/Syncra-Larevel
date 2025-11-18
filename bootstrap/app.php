@@ -23,4 +23,9 @@ if (class_exists(\App\Exceptions\Handler::class)) {
     $app->singleton(Illuminate\Contracts\Debug\ExceptionHandler::class, \App\Exceptions\Handler::class);
 }
 
+// Register the app RouteServiceProvider if present so routes/web.php is loaded.
+if (class_exists(\App\Providers\RouteServiceProvider::class)) {
+    $app->register(\App\Providers\RouteServiceProvider::class);
+}
+
 return $app;

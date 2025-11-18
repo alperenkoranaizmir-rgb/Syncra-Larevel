@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="F8Ffkwa7M1ruEh3O6ft08LwtPxgQRRzMajvPbPFc">
+    <title>Laravel</title>
+    <link rel="preload" as="style" href="http://127.0.0.1:8010/build/assets/app-D4vYSAIX.css" /><link rel="preload" as="style" href="http://127.0.0.1:8010/build/assets/app-CiQq6bbC.css" /><link rel="modulepreload" as="script" href="http://127.0.0.1:8010/build/assets/app-Dqxx1VnV.js" /><link rel="stylesheet" href="http://127.0.0.1:8010/build/assets/app-D4vYSAIX.css" /><link rel="stylesheet" href="http://127.0.0.1:8010/build/assets/app-CiQq6bbC.css" /><script type="module" src="http://127.0.0.1:8010/build/assets/app-Dqxx1VnV.js"></script>    </head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+        <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="/" class="brand-link">
+            <img src="http://127.0.0.1:8010/vendor/adminlte/dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3">
+            <span class="brand-text font-weight-light"><b>Syncra</b></span>
+        </a>
+
+        <div class="sidebar">
+            <nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+        <li class="nav-item">
+            <a href="/" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cogs"></i>
+                <p>
+                    Management
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/users" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+        </div>
+    </aside>
+    
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content p-3">
+            <div class="container-fluid">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4>Takvim</h4>
+    <div>
+      <button id="create-event-btn" class="btn btn-primary">Yeni Etkinlik</button>
+    </div>
+  </div>
+
+  <div id="calendar" data-events-url="http://127.0.0.1:8010/admin/calendar/events"></div>
+
+  <!-- Event Modal -->
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Etkinlik</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="event-form">
+          <div class="modal-body">
+            <input type="hidden" name="id" id="event-id">
+            <div class="form-group">
+              <label for="event-title">Başlık</label>
+              <input type="text" class="form-control" id="event-title" name="title" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="event-start">Başlangıç</label>
+                <input type="datetime-local" class="form-control" id="event-start" name="start" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="event-end">Bitiş</label>
+                <input type="datetime-local" class="form-control" id="event-end" name="end">
+              </div>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="event-all-day" name="all_day">
+              <label class="form-check-label" for="event-all-day">Tüm gün</label>
+            </div>
+            <div class="form-group">
+              <label for="event-description">Açıklama</label>
+              <textarea id="event-description" name="description" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="delete-event-btn">Sil</button>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-inline">
+            Syncra
+        </div>
+        <strong>&copy; 2025 <a href="#">Laravel</a>.</strong> All rights reserved.
+    </footer>
+      <script></script>
+
+</div>
+</body>
+</html>

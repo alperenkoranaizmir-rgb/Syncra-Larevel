@@ -6,5 +6,10 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance as Mi
 
 class PreventRequestsDuringMaintenance extends Middleware
 {
-    // You can customize the response or excluded URIs here if needed.
+    // During development we avoid relying on the framework's MaintenanceMode binding.
+    // Provide a simple pass-through to ensure requests are handled.
+    public function handle($request, \Closure $next)
+    {
+        return $next($request);
+    }
 }
