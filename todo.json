@@ -95,4 +95,17 @@
     "description": "Update `config/adminlte.php` with a richer menu and user settings.",
     "status": "completed"
   }
+  ,
+  {
+    "id": 17,
+    "title": "Create admin user",
+    "description": "Create admin user 'admin' with full permissions and profile fields.",
+    "status": "completed"
+  },
+  {
+    "id": 18,
+    "title": "Add auth & profile pages",
+    "description": "Add login, logout, forgot password, profile show/edit pages and routes.",
+    "status": "completed"
+  }
 ]

@@ -47,4 +47,7 @@ return [
         ['header' => 'Links'],
         ['text' => 'Project Homepage', 'url' => 'https://example.com', 'icon' => 'fas fa-external-link-alt', 'target' => '_blank'],
     ],
+    'right_sidebar' => false,
+    'usermenu_profile_url' => '/profile',
+    'usermenu_desc' => 'Company: Korana Yazılım',
 ];
