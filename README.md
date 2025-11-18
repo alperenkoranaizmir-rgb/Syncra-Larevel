@@ -49,7 +49,7 @@ Proje Teknoloji ve Paket Önerileri (özet)
 Not: Aşağıdaki öneriler en stabil, yaygın kullanılan ve uzun süreli destek gören kombinasyonlara dayanır (2025 Kasım sonu itibarıyla yapılan kontrol). "En kısa yol" olarak Laravel 12 + `jeroennoten/laravel-adminlte` (AdminLTE v3.2) kombinasyonunu öneriyorum — bu yol kurulumu en kolay ve kararlı çalışacak seçenektir.
 
 - **Laravel sürümü (önerilen, kararlı):** Laravel 12.x (ör. `v12.10.1`) — gereksinim: `php ^8.2` (Sizde PHP 8.3.6 var, uyumlu).
-- **Admin panel (önerilen, kararlı):** AdminLTE v3.2 (stabil). AdminLTE v4 şu anda release-candidate/beta durumunda; yeni özellikler var ama kararlılık gerektiren projeler için 3.2 önerilir.
+- **Admin panel (önerilen):** AdminLTE v4 (modern Bootstrap 5 tabanlı). AdminLTE v4 (ör. `4.0.0-rc3`) modern araç zinciri ve yeni bileşenlerle geliyor. Not: v4 halen rc/beta sürüm döngüsünde olabileceğinden, eğer mutlak en stabil (uzun süreli LTS) tercih isterseniz AdminLTE v3.2'yi seçebilirsiniz. Ancak siz v4 istediniz; aşağıda v4 için kısa ve çalışır kurulum adımlarını bulabilirsiniz.
 
 Gereksinimler (kısa):
 - **PHP:** >= 8.2 (sisteminizde PHP 8.3.6 mevcut)
@@ -62,20 +62,58 @@ Laravel ile yaygın/önerilen paketler (ama zorunlu değil; proje gereksinimine 
 - **Topluluk paketleri (admin/kurumsal ihtiyaçlar):** `jeroennoten/laravel-adminlte` (AdminLTE entegrasyonu, tavsiye edilen yol), `spatie/laravel-permission` (rol/izin yönetimi), `yajra/laravel-datatables` (büyük tablolar), `maatwebsite/excel` (Excel export/import), `barryvdh/laravel-dompdf` (PDF), `intervention/image` (görsel işleme), `spatie/laravel-activitylog` (loglama).
 - **Geliştirici / araç paketleri (opsiyonel):** `barryvdh/laravel-debugbar` (dev), `nunomaduro/pint` (kod formatlama), `pestphp/pest` veya `phpunit` (testler), `orchestra/testbench` (paket testi).
 
-AdminLTE entegrasyonu için en kısa ve kararlı yol (öneri):
-1. Laravel 12 projesi oluşturun:
+AdminLTE v4 entegrasyonu (kısa yol, Vite + npm ile Laravel 12 için)
+
+Not: Laravel 12 Vite varsayılan asset pipeline'ını kullanır. Aşağıdaki adımlar AdminLTE v4'ü (ör. `4.0.0-rc3`) doğrudan npm üzerinden projeye ekleyip Vite ile import ederek en kısa ve güvenilir entegrasyonu sağlar.
+
+1. Laravel 12 projesi oluşturun (varsa bu adımı atlayın):
 
 	composer create-project laravel/laravel:^12 syncra
 
-2. `jeroennoten/laravel-adminlte` paketini ekleyin (paket AdminLTE v3.2 ile uyumludur):
+2. Node ve npm kurulumu ve kontrol (v4 RC için Node >=16/18 önerilir):
 
-	composer require jeroennoten/laravel-adminlte:^3.15
+	node -v
+	npm -v
 
-3. Eğer npm ile adminlte asset'lerini kullanacaksanız (altyapı için):
+3. AdminLTE v4 ve gerekli frontend paketlerini yükleyin:
 
-	npm install admin-lte@^3.2 --save
+	npm install admin-lte@4.0.0-rc3 bootstrap@5.3.7 bootstrap-icons overlay-scrollbars --save
 
-4. `jeroennoten/laravel-adminlte` dökümantasyonundaki kurulum adımlarını takip edin (yayınlama, konfigürasyon, view'leri publish etme). Paket Vite/Mix desteği ve çeşitli kurulum türleri sağlar — full admin görünümü için paket docs'una bakın.
+4. Vite / Laravel varsayılan `resources/js/app.js` ve `resources/css/app.css` içine AdminLTE import'ları ekleyin.
+
+	resources/css/app.css
+	--------------------------------
+	@import "admin-lte/dist/css/adminlte.min.css";
+
+	resources/js/app.js
+	--------------------------------
+	import 'bootstrap';
+	import 'overlay-scrollbars';
+	import 'admin-lte/dist/js/adminlte.min.js';
+	import '../css/app.css';
+
+5. `vite` ile asset'leri derleyin:
+
+	npm install
+	npm run build
+
+6. Blade layout'ınızda Vite tag'larını kullanın (Laravel 12 default):
+
+	@vite(['resources/js/app.js'])
+
+7. Yönetici paneli taslağını AdminLTE örnekleriyle oluşturarak tek panel tabanlı uygulamanızı geliştirin (tüm işlemler panel üzerinden yapılacak şekilde route ve controller'larınızı kurgulayın).
+
+AdminLTE v3 ile gelen `jeroennoten/laravel-adminlte` paketinin (Laravel-AdminLTE) avantajı hazır blade şablonları ve komutlarla hızlı entegrasyon sağlamasıdır; fakat bu paket AdminLTE v3.2 ile uyumludur. AdminLTE v4'ü kullanmak istiyorsanız v4'ü npm ile ekleyip (veya AdminLTE 4 kaynaklarını manuel olarak kopyalayarak) Vite üzerinden import etmek en doğrudan yoldur.
+
+AdminLTE v4 (RC) için özet gereksinimler:
+- Node: >= 16 / 18 (LTS önerilir)
+- npm veya pnpm/yarn
+- Bootstrap: 5.3.7
+- OverlayScrollbars, Bootstrap Icons vb. (yukarıdaki `npm install` komutunda eklenmiştir)
+
+Versiyon sabitleme ve yükseltme kısıtı (sizin isteğiniz):
+- Projede paket güncellemeleri yapılmayacaksa `composer.json` ve `package.json`'da versiyonları kesin şekilde kilitleyin ve `composer.lock` / `package-lock.json`'ı repoda tutun. AdminLTE v4 RC olduğundan, repoda tam sürüm etiketi (`4.0.0-rc3`) ile tutmak istenirse risk ve bakım sorumluluğu üstlenilmiş olur.
+
 
 Alternatif (modern Bootstrap 5 tabanlı AdminLTE v4):
 - AdminLTE v4 (ör. `4.0.0-rc3`) Bootstrap 5 tabanlı, modern araç zinciri kullanır (ES Modules, Typescript tooling). Ancak hâlâ RC/beta döneminde olduğu için kritik/uzun süreli üretim projelerinde tavsiye edilmez. Eğer v4 istenirse: `npm install admin-lte@4.0.0-rc3` ve Node >= 16/18 gerekecektir.
