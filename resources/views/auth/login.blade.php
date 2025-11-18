@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="login-box">
-  <div class="login-logo">
-    <a href="/{{ url('/') }}"><b>Syncra</b></a>
+  <div class="login-logo text-center">
+    <a href="/{{ url('/') }}">
+      <img src="{{ asset('vendor/adminlte/dist/img/AdminLTELogo.png') }}" alt="Syncra" class="brand-image img-circle elevation-3" style="opacity:.9;width:72px;height:72px;">
+    </a>
+    <h3 class="mt-2"><b>Syncra</b></h3>
+    <p class="text-muted small mb-0">Yönetim Paneli — Hoşgeldiniz</p>
   </div>
   <div class="card">
     <div class="card-body login-card-body">
@@ -27,6 +31,12 @@
             <div class="input-group-text"><span class="fas fa-lock"></span></div>
           </div>
         </div>
+        @if(session('status'))
+          <div class="alert alert-success">{{ session('status') }}</div>
+        @endif
+        @if($errors->any())
+          <div class="alert alert-danger">{{ $errors->first() }}</div>
+        @endif
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
@@ -43,6 +53,7 @@
       <p class="mb-1">
         <a href="{{ route('password.request') }}">Parolamı unuttum</a>
       </p>
+      <p class="mt-3 text-muted small">Yetkili kullanıcılar için erişim. Giriş bilgilerinizi güvenli tutun.</p>
     </div>
   </div>
 </div>
