@@ -15,13 +15,48 @@
     "id": 3,
     "title": "Install git hooks",
     "description": "Add githooks/post-commit and scripts/install-hooks.sh to install hook that runs update script after commits.",
-    "status": "in-progress"
+    "status": "completed"
   },
   {
     "id": 4,
     "title": "Verify automation",
     "description": "Trigger a sample todo change to confirm Is_listesi.md and README update automatically and commit automated changes.",
     "status": "completed"
+  },
+  {
+    "id": 5,
+    "title": "Install Laravel skeleton",
+    "description": "Create Laravel 12.10.1 project skeleton in repo, copy files, install deps, create .env and generate app key.",
+    "status": "completed"
+  },
+  {
+    "id": 6,
+    "title": "Install AdminLTE v3 and Laravel-AdminLTE",
+    "description": "Composer require jeroennoten/laravel-adminlte and AdminLTE v3, npm install frontend deps, publish vendor assets, update resources imports and run build.",
+    "status": "completed"
+  },
+  {
+    "id": 7,
+    "title": "Publish AdminLTE config & views",
+    "description": "Publish package config and view stubs into `config/adminlte.php` and `resources/views/vendor/adminlte` (manual copy done).",
+    "status": "completed"
+  },
+  {
+    "id": 8,
+    "title": "Document frontend environment",
+    "description": "Add Node.js version recommendation and npm build steps to README; consider upgrading Node to 20+.",
+    "status": "not-started"
+  },
+  {
+    "id": 9,
+    "title": "Set filesystem permissions",
+    "description": "Ensure `storage` and `bootstrap/cache` have correct write permissions on deployment environments.",
+    "status": "not-started"
+  },
+  {
+    "id": 10,
+    "title": "CI / Deployment",
+    "description": "Add CI workflow to run composer install, npm ci, build assets and run migrations on deploy.",
+    "status": "not-started"
   }
-
 ]
