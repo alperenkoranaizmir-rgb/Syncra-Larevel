@@ -21,7 +21,7 @@
       @if(!empty($roles))
         <div class="form-group">
           <label>Roller</label>
-          <select name="roles[]" class="form-control" multiple>
+          <select name="roles[]" class="form-control roles-select" multiple>
             @foreach($roles as $r)
               <option value="{{ $r }}" {{ (method_exists($user, 'getRoleNames') && $user->getRoleNames()->contains($r)) || in_array($r, old('roles', [])) ? 'selected' : '' }}>{{ $r }}</option>
             @endforeach
