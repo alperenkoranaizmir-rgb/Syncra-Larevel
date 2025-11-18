@@ -125,8 +125,6 @@ Not: Laravel 12 Vite varsayılan asset pipeline'ını kullanır. Aşağıdaki ad
 
 7. Yönetici paneli taslağını AdminLTE örnekleriyle oluşturarak tek panel tabanlı uygulamanızı geliştirin (tüm işlemler panel üzerinden yapılacak şekilde route ve controller'larınızı kurgulayın).
 
-AdminLTE v3 ile gelen `jeroennoten/laravel-adminlte` paketinin (Laravel-AdminLTE) avantajı hazır blade şablonları ve komutlarla hızlı entegrasyon sağlamasıdır; fakat bu paket AdminLTE v3.2 ile uyumludur. AdminLTE v4'ü kullanmak istiyorsanız v4'ü npm ile ekleyip (veya AdminLTE 4 kaynaklarını manuel olarak kopyalayarak) Vite üzerinden import etmek en doğrudan yoldur.
-
 AdminLTE v4 (RC) için özet gereksinimler (sabitlenmiş sürümler):
 - Node.js: `18.20.1`
 - npm: `9.8.1` (veya uyumlu pnpm/yarn sürümü)
@@ -135,22 +133,15 @@ AdminLTE v4 (RC) için özet gereksinimler (sabitlenmiş sürümler):
 - Bootstrap Icons: `1.13.1`
 
 Versiyon sabitleme ve yükseltme kısıtı (sizin isteğiniz):
-- Projede paket güncellemeleri yapılmayacaksa `composer.json` ve `package.json`'da versiyonları kesin şekilde kilitleyin ve `composer.lock` / `package-lock.json`'ı repoda tutun. AdminLTE v4 RC olduğundan, repoda tam sürüm etiketi (`4.0.0-rc3`) ile tutmak istenirse risk ve bakım sorumluluğu üstlenilmiş olur.
+- Projede paket güncellemeleri yapılmayacaksa `composer.json` ve `package.json`'da versiyonları kesin şekilde kilitleyin ve `composer.lock` / `package-lock.json`'ı repoya tutun. AdminLTE v4 RC olduğundan, repoda tam sürüm etiketi (`4.0.0-rc3`) ile tutmak istenirse risk ve bakım sorumluluğu üstlenilmiş olur.
 
+Kısa kurulum (en kısa yol özet, AdminLTE v4 odaklı):
+1. `composer create-project laravel/laravel=12.10.1 .`
+2. `npm install admin-lte@4.0.0-rc3 bootstrap@5.3.7 bootstrap-icons@1.13.1 overlay-scrollbars@2.11.0 --save`
+3. `resources/css/app.css` ve `resources/js/app.js` içine AdminLTE importlarını ekleyin (README'deki örneklere göre).
+4. `npm install` ve `npm run build` ile asset'leri derleyin.
 
-Alternatif (modern Bootstrap 5 tabanlı AdminLTE v4):
-- AdminLTE v4 (ör. `4.0.0-rc3`) Bootstrap 5 tabanlı, modern araç zinciri kullanır (ES Modules, Typescript tooling). Ancak hâlâ RC/beta döneminde olduğu için kritik/uzun süreli üretim projelerinde tavsiye edilmez. Eğer v4 istenirse: `npm install admin-lte@4.0.0-rc3` ve Node >= 16/18 gerekecektir.
-
-Versiyon sabitleme ve yükseltme kısıtı (sizin isteğiniz):
-- Projede paket güncellemeleri yapılmayacaksa `composer.json` ve `package.json`'da versiyonları kesin şekilde (ör. `"laravel/framework": "12.10.1"`) kilitleyin ve `composer.lock` / `package-lock.json`'ı repoda tutun. Bu sayede CI veya başka geliştiriciler aynı sürümleri kullanır. Not: güvenlik yamaları gerekirse ayrı politika ile değerlendirilmelidir.
-
-Kısa kurulum (en kısa yol özet):
-1. `composer create-project laravel/laravel:^12 .`
-2. `composer require jeroennoten/laravel-adminlte:^3.15`
-3. `php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=config` (paket dökümantasyonuna göre)
-4. `npm install && npm run build` (asset'leri derlemek için)
-
-Detaylı paket dokümantasyonlarına bağlantılar:
+Detaylı paket/dökümantasyon bağlantıları:
 - Laravel docs: https://laravel.com/docs/12.x
-- AdminLTE v3 docs: https://adminlte.io/docs/3.2/
-- Laravel-AdminLTE paket docs: https://jeroennoten.github.io/Laravel-AdminLTE/
+- AdminLTE releases & docs: https://github.com/ColorlibHQ/AdminLTE/releases
+- AdminLTE ana sayfa: https://adminlte.io/
