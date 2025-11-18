@@ -10,7 +10,7 @@ case "$last_msg" in
 esac
 
 # Run the update script
-ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 python3 "$ROOT_DIR/scripts/update_todos.py"
 
 # If files changed, commit them with a distinct message so the hook can skip recursion
