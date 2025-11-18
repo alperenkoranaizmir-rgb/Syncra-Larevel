@@ -11,11 +11,40 @@ return [
 
     'layout_topnav' => false,
     'usermenu_enabled' => true,
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-primary',
+    'usermenu_profile_url' => true,
 
     'menu' => [
         ['text' => 'search', 'search' => true],
         ['text' => 'Dashboard', 'url' => '/', 'icon' => 'fas fa-home'],
+
         ['header' => 'Management'],
-        ['text' => 'Users', 'url' => '/admin/users', 'icon' => 'fas fa-users'],
+        [
+            'text' => 'Users',
+            'icon' => 'fas fa-users',
+            'submenu' => [
+                ['text' => 'All Users', 'url' => '/admin/users', 'icon' => 'fas fa-list', 'can' => 'manage users'],
+                ['text' => 'Create User', 'url' => '/admin/users/create', 'icon' => 'fas fa-user-plus', 'can' => 'manage users'],
+            ],
+        ],
+        [
+            'text' => 'Access Control',
+            'icon' => 'fas fa-user-shield',
+            'submenu' => [
+                ['text' => 'Roles', 'url' => '/admin/roles', 'icon' => 'fas fa-user-tag', 'can' => 'manage users'],
+                ['text' => 'Permissions', 'url' => '/admin/permissions', 'icon' => 'fas fa-key', 'can' => 'manage users'],
+            ],
+        ],
+
+        ['header' => 'Site'],
+        ['text' => 'Profile', 'url' => '/profile', 'icon' => 'fas fa-id-badge'],
+        ['text' => 'Settings', 'url' => '/settings', 'icon' => 'fas fa-cog', 'can' => 'manage content'],
+
+        ['header' => 'Reports'],
+        ['text' => 'Activity', 'url' => '/admin/reports/activity', 'icon' => 'fas fa-chart-line', 'can' => 'manage content'],
+
+        ['header' => 'Links'],
+        ['text' => 'Project Homepage', 'url' => 'https://example.com', 'icon' => 'fas fa-external-link-alt', 'target' => '_blank'],
     ],
 ];

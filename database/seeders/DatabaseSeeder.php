@@ -16,10 +16,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Seed roles & permissions (spatie) if package is installed
+        if (class_exists(\Database\Seeders\PermissionSeeder::class)) {
+            $this->call(\Database\Seeders\PermissionSeeder::class);
+        }
     }
 }
