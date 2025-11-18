@@ -33,4 +33,8 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     // Calendar
     Route::get('calendar', [App\Http\Controllers\Admin\CalendarController::class, 'index'])->name('admin.calendar.index');
     Route::get('calendar/events', [App\Http\Controllers\Admin\CalendarController::class, 'events'])->name('admin.calendar.events');
+    Route::post('calendar/events', [App\Http\Controllers\Admin\CalendarController::class, 'store'])->name('admin.calendar.events.store');
+    Route::get('calendar/events/{id}', [App\Http\Controllers\Admin\CalendarController::class, 'show'])->name('admin.calendar.events.show');
+    Route::put('calendar/events/{id}', [App\Http\Controllers\Admin\CalendarController::class, 'update'])->name('admin.calendar.events.update');
+    Route::delete('calendar/events/{id}', [App\Http\Controllers\Admin\CalendarController::class, 'destroy'])->name('admin.calendar.events.destroy');
 });

@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import "admin-lte/dist/css/adminlte.min.css";
-@import "./vendor/fullcalendar.min.css";
 /* Additional UI library CSS is imported in resources/js/app.js so Vite bundles them */
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';

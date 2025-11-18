@@ -19,12 +19,4 @@ import 'jsgrid';
 
 // FullCalendar styles will be imported per-page; include base adminlte css
 import '../css/app.css';
-
-// FullCalendar (expose to window so blades can use without CDN)
-import { Calendar as FullCalendarCalendar } from '@fullcalendar/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-
-window.FullCalendar = {
-	Calendar: FullCalendarCalendar,
-	dayGridPlugin,
-};
+// FullCalendar is lazy-loaded on the calendar page (see resources/js/pages/calendar.js)
