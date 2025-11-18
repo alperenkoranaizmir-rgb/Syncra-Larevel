@@ -30,4 +30,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::get('/', function () { return view('vendor.adminlte.dashboard.index'); });
     // Admin users management
     Route::resource('users', App\Http\Controllers\Admin\UserController::class, ['as' => 'admin']);
+    // Calendar
+    Route::get('calendar', [App\Http\Controllers\Admin\CalendarController::class, 'index'])->name('admin.calendar.index');
+    Route::get('calendar/events', [App\Http\Controllers\Admin\CalendarController::class, 'events'])->name('admin.calendar.events');
 });

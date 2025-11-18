@@ -23,4 +23,6 @@
   </script>
 @endpush
 
+  {{-- FullCalendar CSS is vendored into `resources/css/vendor/fullcalendar.min.css` and bundled by Vite --}}
+
 @endsection

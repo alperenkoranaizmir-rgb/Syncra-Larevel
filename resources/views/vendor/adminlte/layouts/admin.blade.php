@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('adminlte.title', config('app.name')) }}</title>
     @vite(['resources/js/app.js'])
+    @stack('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

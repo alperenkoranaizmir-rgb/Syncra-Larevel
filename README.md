@@ -66,6 +66,22 @@ Quick steps to get a working local environment (assumes Linux/macOS):
 - **Node.js**: use Node 20+ (recommended). Older Node may build but can produce warnings.
 - **PHP/Composer**: PHP 8.2+ and Composer 2.
 
+Note: This project vendors FullCalendar CSS into `resources/css/vendor/fullcalendar.min.css` so the calendar styles are bundled by Vite.
+
+If you use `nvm`, run:
+
+```bash
+nvm install 20
+nvm use 20
+```
+
+After switching Node versions, run the frontend build:
+
+```bash
+npm ci
+npm run build
+```
+
 Run these commands from the project root:
 
 ```bash
