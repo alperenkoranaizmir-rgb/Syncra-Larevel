@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div id="calendar" data-events-url="{{ route('admin.calendar.events') }}"></div>
+  <div id="calendar" data-events-url="{{ url('/admin/calendar/events') }}"></div>
 
   <!-- Event Modal -->
   <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-hidden="true">
