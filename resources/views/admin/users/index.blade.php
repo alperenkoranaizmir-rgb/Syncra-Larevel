@@ -20,7 +20,15 @@
             <td>{{ $u->id }}</td>
             <td>{{ $u->name }}</td>
             <td>{{ $u->email }}</td>
-            <td>{{ method_exists($u, 'getRoleNames') ? $u->getRoleNames()->join(', ') : '-' }}</td>
+            <td>
+              @if(method_exists($u, 'getRoleNames'))
+                @foreach($u->getRoleNames() as $role)
+                  <span class="badge badge-info mr-1">{{ $role }}</span>
+                @endforeach
+              @else
+                -
+              @endif
+            </td>
             <td>{{ $u->is_admin ? 'Evet' : 'Hayır' }}</td>
             <td>
               <a href="{{ route('admin.users.edit', $u) }}" class="btn btn-sm btn-secondary">Düzenle</a>

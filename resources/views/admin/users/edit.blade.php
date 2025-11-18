@@ -17,6 +17,18 @@
         <div class="form-group col-md-6"><label>Şifre (Tekrar)</label><input name="password_confirmation" type="password" class="form-control"></div>
       </div>
       <div class="form-group form-check"><input type="checkbox" name="is_admin" value="1" class="form-check-input" id="is_admin" {{ $user->is_admin ? 'checked' : '' }}><label class="form-check-label" for="is_admin">Admin</label></div>
+
+      @if(!empty($roles))
+        <div class="form-group">
+          <label>Roller</label>
+          <select name="roles[]" class="form-control" multiple>
+            @foreach($roles as $r)
+              <option value="{{ $r }}" {{ (method_exists($user, 'getRoleNames') && $user->getRoleNames()->contains($r)) || in_array($r, old('roles', [])) ? 'selected' : '' }}>{{ $r }}</option>
+            @endforeach
+          </select>
+          <small class="form-text text-muted">Mevcut roller seçili olarak gelir.</small>
+        </div>
+      @endif
       <button class="btn btn-primary">Kaydet</button>
       <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">İptal</a>
     </form>
