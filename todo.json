@@ -8,10 +8,206 @@
   {
     "id": 2,
     "title": "Add automation scripts",
-    "description": "Create scripts/update_todos.py and todo.json to generate Is_listesi.md and update README automatically from the todo file.",
+    "description": "Create `scripts/update_todos.py` and `todo.json` to generate `Is_listesi.md` and update README automatically from the todo file.",
     "status": "completed"
   },
   {
+    "id": 3,
+    "title": "Install git hooks",
+    "description": "Add `githooks/post-commit` and `scripts/install-hooks.sh` to install hook that runs update script after commits.",
+    "status": "completed"
+  },
+  {
+    "id": 4,
+    "title": "Verify automation",
+    "description": "Trigger a sample todo change to confirm `Is_listesi.md` and README update automatically and commit automated changes.",
+    "status": "completed"
+  },
+  {
+    "id": 5,
+    "title": "Install Laravel skeleton",
+    "description": "Create Laravel 12.10.1 project skeleton in repo, copy files, install deps, create .env and generate app key.",
+    "status": "completed"
+  },
+  {
+    "id": 6,
+    "title": "Install AdminLTE v3 and Laravel-AdminLTE",
+    "description": "Composer require jeroennoten/laravel-adminlte and AdminLTE v3, npm install frontend deps, publish vendor assets, update resources imports and run build.",
+    "status": "completed"
+  },
+  {
+    "id": 7,
+    "title": "Publish AdminLTE config & views",
+    "description": "Publish package config and view stubs into `config/adminlte.php` and `resources/views/vendor/adminlte` (manual copy done).",
+    "status": "completed"
+  },
+  {
+    "id": 8,
+    "title": "Document frontend environment",
+    "description": "Add Node.js version recommendation and npm build steps to README; consider upgrading Node to 20+.",
+    "status": "not-started"
+  },
+  {
+    "id": 9,
+    "title": "Set filesystem permissions",
+    "description": "Ensure `storage` and `bootstrap/cache` have correct write permissions on deployment environments.",
+    "status": "not-started"
+  },
+  {
+    "id": 10,
+    "title": "CI / Deployment",
+    "description": "Add CI workflow to run composer install, npm ci, build assets and run migrations on deploy.",
+    "status": "completed"
+  },
+  {
+    "id": 11,
+    "title": "Copy AdminLTE dist to public",
+    "description": "Copy AdminLTE `dist` assets (css/js/img) into `public/vendor/adminlte` and ensure paths in config/layout point to them.",
+    "status": "not-started"
+  },
+  {
+    "id": 12,
+    "title": "Add AdminLTE example views",
+    "description": "Add partials: `partials/sidebar.blade.php`, auth views, and dashboard card examples under `resources/views/vendor/adminlte`.",
+    "status": "completed"
+  },
+  {
+    "id": 13,
+    "title": "Kernel: restore default content",
+    "description": "Replace current minimal `app/Http/Kernel.php` with the standard Laravel Kernel content compatible with the installed framework.",
+    "status": "completed"
+  },
+  {
+    "id": 14,
+    "title": "AdminMiddleware: role/permission-based",
+    "description": "Make `AdminMiddleware` use role/permission checks (Spatie) and gracefully fallback to `is_admin` property.",
+    "status": "completed"
+  },
+  {
+    "id": 15,
+    "title": "Spatie permissions: seeders",
+    "description": "Add seeder `PermissionSeeder` to create roles/permissions and assign to first user (run during migrations/seeds).",
+    "status": "completed"
+  },
+  {
+    "id": 16,
+    "title": "config/adminlte.php: richer menu",
+    "description": "Update `config/adminlte.php` with a richer menu and user settings.",
+    "status": "completed"
+  }
+]
+[
+  {
+    "id": 1,
+    "title": "Switch README to AdminLTE v3",
+    "description": "Replace AdminLTE v4 content with AdminLTE v3.2.0 (pinned) instructions; commit and push.",
+    "status": "completed"
+  },
+  {
+    "id": 2,
+    "title": "Add automation scripts",
+    "description": "Create `scripts/update_todos.py` and `todo.json` to generate `Is_listesi.md` and update README automatically from the todo file.",
+    "status": "completed"
+  },
+  {
+    "id": 3,
+    "title": "Install git hooks",
+    "description": "Add `githooks/post-commit` and `scripts/install-hooks.sh` to install hook that runs update script after commits.",
+    "status": "completed"
+  },
+  {
+    "id": 4,
+    "title": "Verify automation",
+    "description": "Trigger a sample todo change to confirm `Is_listesi.md` and README update automatically and commit automated changes.",
+    "status": "completed"
+  },
+  {
+    "id": 5,
+    "title": "Install Laravel skeleton",
+    "description": "Create Laravel 12.10.1 project skeleton in repo, copy files, install deps, create .env and generate app key.",
+    "status": "completed"
+  },
+  {
+    "id": 6,
+    "title": "Install AdminLTE v3 and Laravel-AdminLTE",
+    "description": "Composer require jeroennoten/laravel-adminlte and AdminLTE v3, npm install frontend deps, publish vendor assets, update resources imports and run build.",
+    "status": "completed"
+  },
+  {
+    "id": 7,
+    "title": "Publish AdminLTE config & views",
+    "description": "Publish package config and view stubs into `config/adminlte.php` and `resources/views/vendor/adminlte` (manual copy done).",
+    "status": "completed"
+  },
+  {
+    "id": 8,
+    "title": "Document frontend environment",
+    "description": "Add Node.js version recommendation and npm build steps to README; consider upgrading Node to 20+.",
+    "status": "not-started"
+  },
+  {
+    "id": 9,
+    "title": "Set filesystem permissions",
+    "description": "Ensure `storage` and `bootstrap/cache` have correct write permissions on deployment environments.",
+    "status": "not-started"
+  },
+  {
+    "id": 10,
+    "title": "CI / Deployment",
+    "description": "Add CI workflow to run composer install, npm ci, build assets and run migrations on deploy.",
+    "status": "completed"
+  },
+  {
+    "id": 11,
+    "title": "Copy AdminLTE dist to public",
+    "description": "Copy AdminLTE `dist` assets (css/js/img) into `public/vendor/adminlte` and ensure paths in config/layout point to them.",
+    "status": "not-started"
+  },
+  {
+    "id": 12,
+    "title": "Add AdminLTE example views",
+    "description": "Add partials: `partials/sidebar.blade.php`, auth views, and dashboard card examples under `resources/views/vendor/adminlte`.",
+    "status": "completed"
+  },
+  {
+    "id": 13,
+    "title": "Kernel: restore default content",
+    "description": "Replace current minimal `app/Http/Kernel.php` with the standard Laravel Kernel content compatible with the installed framework.",
+    "status": "completed"
+  },
+  {
+    "id": 14,
+    "title": "AdminMiddleware: role/permission-based",
+    "description": "Make `AdminMiddleware` use role/permission checks (Spatie) and gracefully fallback to `is_admin` property.",
+    "status": "completed"
+  },
+  {
+    "id": 15,
+    "title": "Spatie permissions: seeders",
+    "description": "Add seeder `PermissionSeeder` to create roles/permissions and assign to first user (run during migrations/seeds).",
+    "status": "completed"
+  },
+  {
+    "id": 16,
+    "title": "config/adminlte.php: richer menu",
+    "description": "Update `config/adminlte.php` with a richer menu and user settings.",
+    "status": "completed"
+  }
+]
+[
+  {
+    "id": 1,
+    "title": "Switch README to AdminLTE v3",
+    "description": "Replace AdminLTE v4 content with AdminLTE v3.2.0 (pinned) instructions; commit and push.",
+    "status": "completed"
+  {
+    "id": 3,
+    "title": "Install git hooks",
+    "description": "Add githooks/post-commit and scripts/install-hooks.sh to install hook that runs update script after commits.",
+    "status": "completed"
+  },
+  },
+  {adminlte.php'yi daha zengin bir menü ve kullanıcı ayarlarıyla güncelleyeim.
     "id": 3,
     "title": "Install git hooks",
     "description": "Add githooks/post-commit and scripts/install-hooks.sh to install hook that runs update script after commits.",
@@ -57,6 +253,6 @@
     "id": 10,
     "title": "CI / Deployment",
     "description": "Add CI workflow to run composer install, npm ci, build assets and run migrations on deploy.",
-    "status": "not-started"
+    "status": "completed"
   }
 ]
