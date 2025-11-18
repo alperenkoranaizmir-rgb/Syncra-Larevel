@@ -8,20 +8,24 @@
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-    @auth
+    @guest
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('login') }}">Giriş</a>
+      </li>
+    @else
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-user"></i> {{ Auth::user()->name }}
+          <img src="{{ Auth::user()->avatar ?? asset('vendor/adminlte/img/avatar.png') }}" class="img-circle" alt="avatar" style="width:28px;height:28px;object-fit:cover;margin-right:6px;"> {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="{{ url('/profile') }}" class="dropdown-item">Profil</a>
+          <a href="{{ route('profile.show') }}" class="dropdown-item">Profil</a>
           <div class="dropdown-divider"></div>
-          <form method="POST" action="{{ route('logout') }}">
+          <form method="POST" action="{{ route('logout') }}" class="px-3">
             @csrf
-            <button class="dropdown-item">Çıkış</button>
+            <button type="submit" class="btn btn-sm btn-danger">Çıkış</button>
           </form>
         </div>
       </li>
-    @endauth
+    @endguest
   </ul>
 </nav>
