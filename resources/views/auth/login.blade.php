@@ -7,7 +7,7 @@
   </div>
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Oturum açmak için giriş yapın</p>
 
       @if($errors->any())
         <div class="alert alert-danger">{{ $errors->first() }}</div>
@@ -16,13 +16,13 @@
       <form action="{{ route('login.post') }}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email" required>
+          <input type="email" name="email" class="form-control" placeholder="E-posta" required autofocus>
           <div class="input-group-append">
             <div class="input-group-text"><span class="fas fa-envelope"></span></div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password" required>
+          <input type="password" name="password" class="form-control" placeholder="Parola" required>
           <div class="input-group-append">
             <div class="input-group-text"><span class="fas fa-lock"></span></div>
           </div>
@@ -31,17 +31,17 @@
           <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember" name="remember">
-              <label for="remember">Remember Me</label>
+              <label for="remember">Beni hatırla</label>
             </div>
           </div>
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
           </div>
         </div>
       </form>
 
       <p class="mb-1">
-        <a href="{{ route('password.request') }}">I forgot my password</a>
+        <a href="{{ route('password.request') }}">Parolamı unuttum</a>
       </p>
     </div>
   </div>
