@@ -1,3 +1,27 @@
+@extends('layouts.admin')
+
+@section('title','Yeni Kullanıcı')
+
+@section('content')
+<div class="card">
+  <div class="card-header"><h3 class="card-title">Yeni Kullanıcı Oluştur</h3></div>
+  <div class="card-body">
+    @if($errors->any())<div class="alert alert-danger"><ul>@foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach</ul></div>@endif
+    <form method="POST" action="{{ route('admin.users.store') }}">
+      @csrf
+      <div class="form-group"><label>İsim</label><input name="name" class="form-control" value="{{ old('name') }}" required></div>
+      <div class="form-group"><label>E-posta</label><input name="email" type="email" class="form-control" value="{{ old('email') }}" required></div>
+      <div class="form-row">
+        <div class="form-group col-md-6"><label>Şifre</label><input name="password" type="password" class="form-control" required></div>
+        <div class="form-group col-md-6"><label>Şifre (Tekrar)</label><input name="password_confirmation" type="password" class="form-control" required></div>
+      </div>
+      <div class="form-group form-check"><input type="checkbox" name="is_admin" value="1" class="form-check-input" id="is_admin"><label class="form-check-label" for="is_admin">Admin</label></div>
+      <button class="btn btn-primary">Oluştur</button>
+      <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">İptal</a>
+    </form>
+  </div>
+</div>
+@endsection
 @extends('vendor.adminlte.layouts.admin')
 
 @section('content')

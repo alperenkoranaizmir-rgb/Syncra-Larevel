@@ -1,3 +1,28 @@
+@extends('layouts.admin')
+
+@section('title','Kullanıcı Düzenle')
+
+@section('content')
+<div class="card">
+  <div class="card-header"><h3 class="card-title">Kullanıcı Düzenle</h3></div>
+  <div class="card-body">
+    @if($errors->any())<div class="alert alert-danger"><ul>@foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach</ul></div>@endif
+    <form method="POST" action="{{ route('admin.users.update', $user) }}">
+      @csrf
+      @method('PUT')
+      <div class="form-group"><label>İsim</label><input name="name" class="form-control" value="{{ old('name', $user->name) }}" required></div>
+      <div class="form-group"><label>E-posta</label><input name="email" type="email" class="form-control" value="{{ old('email', $user->email) }}" required></div>
+      <div class="form-row">
+        <div class="form-group col-md-6"><label>Şifre (boş bırakılırsa değişmez)</label><input name="password" type="password" class="form-control"></div>
+        <div class="form-group col-md-6"><label>Şifre (Tekrar)</label><input name="password_confirmation" type="password" class="form-control"></div>
+      </div>
+      <div class="form-group form-check"><input type="checkbox" name="is_admin" value="1" class="form-check-input" id="is_admin" {{ $user->is_admin ? 'checked' : '' }}><label class="form-check-label" for="is_admin">Admin</label></div>
+      <button class="btn btn-primary">Kaydet</button>
+      <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">İptal</a>
+    </form>
+  </div>
+</div>
+@endsection
 @extends('vendor.adminlte.layouts.admin')
 
 @section('content')

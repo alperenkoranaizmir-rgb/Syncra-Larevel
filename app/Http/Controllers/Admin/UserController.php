@@ -12,18 +12,28 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(User::class, 'user');
+        // Middleware inline to ensure only admins access this controller
+        $this->middleware(function ($request, $next) {
+            $u = auth()->user();
+            if (!$u || (!(method_exists($u, 'hasRole') && $u->hasRole('admin')) && !$u->is_admin)) {
+                abort(403);
+            }
+            return $next($request);
+        });
     }
 
     public function index()
     {
-        $users = User::with('roles')->paginate(20);
+        $users = User::with('roles')->orderBy('id','desc')->paginate(20);
         return view('admin.users.index', compact('users'));
     }
 
     public function create()
     {
-        $roles = Role::pluck('name','name');
+        $roles = [];
+        if (class_exists(Role::class)) {
+            $roles = Role::pluck('name','name');
+        }
         return view('admin.users.create', compact('roles'));
     }
 
@@ -34,7 +44,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'username' => 'nullable|string|max:50',
-            'tckn' => 'nullable|string|max:11',
+            'tckn' => 'nullable|string|max:20',
             'phone' => 'nullable|string|max:30',
             'is_admin' => 'nullable|boolean',
             'roles' => 'nullable|array',
@@ -59,13 +69,15 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $roles = Role::pluck('name','name');
+        $roles = [];
+        if (class_exists(Role::class)) {
+            $roles = Role::pluck('name','name');
+        }
         return view('admin.users.edit', compact('user','roles'));
     }
 
     public function show(User $user)
     {
-        // Simple show: redirect to edit form for now
         return redirect()->route('admin.users.edit', $user);
     }
 
@@ -76,7 +88,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,'.$user->id,
             'password' => 'nullable|string|min:8|confirmed',
             'username' => 'nullable|string|max:50',
-            'tckn' => 'nullable|string|max:11',
+            'tckn' => 'nullable|string|max:20',
             'phone' => 'nullable|string|max:30',
             'is_admin' => 'nullable|boolean',
             'roles' => 'nullable|array',
@@ -108,3 +120,4 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('status', 'Kullanıcı silindi.');
     }
 }
+
