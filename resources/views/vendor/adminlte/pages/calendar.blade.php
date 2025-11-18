@@ -7,15 +7,14 @@
 </div>
 
 @push('scripts')
-  <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Use FullCalendar provided by the bundled app.js (Vite)
+      var Calendar = window.FullCalendar.Calendar;
+      var dayGrid = window.FullCalendar.dayGridPlugin;
       var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: [ 'dayGrid' ],
+      var calendar = new Calendar(calendarEl, {
+        plugins: [ dayGrid ],
         initialView: 'dayGridMonth',
         events: '{{ route('admin.calendar.events') }}'
       });

@@ -5,7 +5,9 @@
 @import "../node_modules/select2/dist/css/select2.min.css";
 @import "../node_modules/summernote/dist/summernote-bs4.css";
 @import "../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+/* FullCalendar CSS (imported from package) */
 @import "../node_modules/@fullcalendar/core/main.css";
+@import "../node_modules/@fullcalendar/daygrid/main.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

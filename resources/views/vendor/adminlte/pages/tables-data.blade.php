@@ -9,3 +9,13 @@
   </table>
 </div>
 @endsection
+
+  @push('scripts')
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.jQuery && $.fn.dataTable) {
+          $('#datatable').DataTable({responsive:true});
+        }
+      });
+    </script>
+  @endpush
