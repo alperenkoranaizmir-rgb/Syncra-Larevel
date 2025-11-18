@@ -80,68 +80,63 @@ Laravel ile yaygın/önerilen paketler (ama zorunlu değil; proje gereksinimine 
 - **Topluluk paketleri (admin/kurumsal ihtiyaçlar):** `jeroennoten/laravel-adminlte` (AdminLTE entegrasyonu, tavsiye edilen yol), `spatie/laravel-permission` (rol/izin yönetimi), `yajra/laravel-datatables` (büyük tablolar), `maatwebsite/excel` (Excel export/import), `barryvdh/laravel-dompdf` (PDF), `intervention/image` (görsel işleme), `spatie/laravel-activitylog` (loglama).
 - **Geliştirici / araç paketleri (opsiyonel):** `barryvdh/laravel-debugbar` (dev), `nunomaduro/pint` (kod formatlama), `pestphp/pest` veya `phpunit` (testler), `orchestra/testbench` (paket testi).
 
-AdminLTE v4 entegrasyonu (kısa yol, Vite + npm ile Laravel 12 için)
+AdminLTE v3 entegrasyonu (kısa yol, Laravel 12 ile, kesin sürümler)
 
-Not: Laravel 12 Vite varsayılan asset pipeline'ını kullanır. Aşağıdaki adımlar AdminLTE v4'ü (ör. `4.0.0-rc3`) doğrudan npm üzerinden projeye ekleyip Vite ile import ederek en kısa ve güvenilir entegrasyonu sağlar.
-
+Not: Bu proje için kesin tercih AdminLTE v3.2.0'dır. Aşağıdaki adımlar Laravel 12 ile sorunsuz çalışacak şekilde hazırlanmıştır ve `jeroennoten/laravel-adminlte` paketini kullanarak blade şablonlarıyla hızlı entegrasyon sağlar.
 
 1. Laravel 12 projesi oluşturun (kesin sürüm kullanımı):
 
-	composer create-project laravel/laravel=12.10.1 syncra
+   composer create-project laravel/laravel=12.10.1 syncra
 
-2. Node ve npm kurulumu ve kontrol (v4 RC için Node >=16/18 önerilir):
+2. Gerekli PHP/Composer ayarlarını doğrulayın (sisteminizde zaten uyumlu PHP 8.3.6 ve Composer 2.9.1 bulunuyor).
 
-	node -v
-	npm -v
+3. `jeroennoten/laravel-adminlte` paketini kesin sürüm ile ekleyin (bu paket `almasaeed2010/adminlte` 3.2.* bağımlılığını çekecektir):
 
-3. AdminLTE v4 ve gerekli frontend paketlerini kesin sürümlerle yükleyin:
+   composer require jeroennoten/laravel-adminlte=3.15.2
 
-	npm install admin-lte@4.0.0-rc3 bootstrap@5.3.7 bootstrap-icons@1.13.1 overlay-scrollbars@2.11.0 --save
+   (Eğer isterseniz adminlte paketini doğrudan pin'leyebilirsiniz: `composer require almasaeed2010/adminlte=3.2.0`)
 
-4. Vite / Laravel varsayılan `resources/js/app.js` ve `resources/css/app.css` içine AdminLTE import'ları ekleyin.
+4. Paket yapılandırmasını ve view'leri yayınlayın:
 
-	resources/css/app.css
-	--------------------------------
-	@import "admin-lte/dist/css/adminlte.min.css";
+   php artisan vendor:publish --provider="JeroenNoten\\LaravelAdminLte\\ServiceProvider" --tag=config
+   php artisan vendor:publish --tag=adminlte --force
 
-	resources/js/app.js
-	--------------------------------
-	import 'bootstrap';
-	import 'overlay-scrollbars';
-	import 'admin-lte/dist/js/adminlte.min.js';
-	import '../css/app.css';
+5. Frontend (assets) için kesin sürümleri yükleyin (AdminLTE v3 kullandığı bootstrap4 + jquery tabanlıdır):
 
-5. `vite` ile asset'leri derleyin (kesin sürümlere göre):
+   npm install bootstrap@4.6.0 jquery@3.6.0 overlay-scrollbars@1.13.1 --save
 
-	# ilk kez: paketleri yükleyin (şimdiden exact sürümler package.json'a kaydolacaktır)
-	npm install
+6. `resources/js/app.js` ve `resources/sass/app.scss` (veya `resources/css/app.css`) içine gerekli import'ları ekleyin. Örnek:
 
-	# development derlemesi
-	npm run build
+   resources/js/app.js
+   --------------------------------
+   import 'jquery';
+   import 'bootstrap';
+   import 'overlayscrollbars';
+   import '../sass/app.scss';
 
-6. Blade layout'ınızda Vite tag'larını kullanın (Laravel 12 default):
+   resources/sass/app.scss
+   --------------------------------
+   @import "~admin-lte/dist/css/adminlte.min.css";
 
-	@vite(['resources/js/app.js'])
+7. Asset'leri derleyin:
 
-7. Yönetici paneli taslağını AdminLTE örnekleriyle oluşturarak tek panel tabanlı uygulamanızı geliştirin (tüm işlemler panel üzerinden yapılacak şekilde route ve controller'larınızı kurgulayın).
+   npm install
+   npm run build
 
-AdminLTE v4 (RC) için özet gereksinimler (sabitlenmiş sürümler):
-- Node.js: `18.20.1`
-- npm: `9.8.1` (veya uyumlu pnpm/yarn sürümü)
-- Bootstrap: `5.3.7`
-- OverlayScrollbars: `2.11.0`
-- Bootstrap Icons: `1.13.1`
+8. Blade layout'unuzu `layouts` dizininde AdminLTE yapılarına göre ayarlayın; `jeroennoten/laravel-adminlte` paket dokümantasyonundaki blade örneklerini kullanın.
 
-Versiyon sabitleme ve yükseltme kısıtı (sizin isteğiniz):
-- Projede paket güncellemeleri yapılmayacaksa `composer.json` ve `package.json`'da versiyonları kesin şekilde kilitleyin ve `composer.lock` / `package-lock.json`'ı repoya tutun. AdminLTE v4 RC olduğundan, repoda tam sürüm etiketi (`4.0.0-rc3`) ile tutmak istenirse risk ve bakım sorumluluğu üstlenilmiş olur.
+AdminLTE v3 (stable) için özet sabitlenmiş sürümler:
+- AdminLTE: `3.2.0`
+- jeroennoten/laravel-adminlte: `3.15.2`
+- Bootstrap: `4.6.0`
+- jQuery: `3.6.0`
+- OverlayScrollbars: `1.13.1`
+- Node.js: `18.20.1` (uyumluluk için; npm 9.8.1)
 
-Kısa kurulum (en kısa yol özet, AdminLTE v4 odaklı):
-1. `composer create-project laravel/laravel=12.10.1 .`
-2. `npm install admin-lte@4.0.0-rc3 bootstrap@5.3.7 bootstrap-icons@1.13.1 overlay-scrollbars@2.11.0 --save`
-3. `resources/css/app.css` ve `resources/js/app.js` içine AdminLTE importlarını ekleyin (README'deki örneklere göre).
-4. `npm install` ve `npm run build` ile asset'leri derleyin.
+Versiyon sabitleme politikası:
+- `composer.json` ve `package.json`'da yukarıdaki exact sürümleri kullanın ve `composer.lock` ile `package-lock.json` dosyalarını repoya ekleyin. Paket güncellemeleri otomatik yapılmayacak; güvenlik yamaları gerektiğinde ayrı süreçle uygulanacaktır.
 
 Detaylı paket/dökümantasyon bağlantıları:
 - Laravel docs: https://laravel.com/docs/12.x
-- AdminLTE releases & docs: https://github.com/ColorlibHQ/AdminLTE/releases
-- AdminLTE ana sayfa: https://adminlte.io/
+- Laravel-AdminLTE docs: https://jeroennoten.github.io/Laravel-AdminLTE/
+- AdminLTE (v3) docs/examples: https://adminlte.io/themes/v3/
