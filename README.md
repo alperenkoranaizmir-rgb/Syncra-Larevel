@@ -59,6 +59,64 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
+## Local Setup
+
+Quick steps to get a working local environment (assumes Linux/macOS):
+
+- **Node.js**: use Node 20+ (recommended). Older Node may build but can produce warnings.
+- **PHP/Composer**: PHP 8.2+ and Composer 2.
+
+Run these commands from the project root:
+
+```bash
+# PHP deps
+composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# If you need sqlite for local testing
+mkdir -p database
+touch database/database.sqlite
+
+# Publish Spatie permission config/migrations (if using roles/permissions)
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="permission-config" --force
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="permission-migrations" --force
+
+# Run migrations
+php artisan migrate --force
+
+# Seed roles/permissions (PermissionSeeder is tolerant if Spatie isn't installed)
+php artisan db:seed --class="\Database\Seeders\PermissionSeeder"
+
+# Frontend
+npm ci
+npm run build
+```
+
+Add `HasRoles` to your `App\Models\User` model after you install `spatie/laravel-permission`:
+
+```php
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+	use HasRoles; // plus existing traits
+	// ...
+}
+```
+
+Set filesystem permissions for the webserver (adjust group as needed):
+
+```bash
+# make writable by owner and group
+chmod -R ug+rwx storage bootstrap/cache
+# set group to www-data if appropriate
+sudo chown -R $USER:www-data storage bootstrap/cache || true
+```
+
+Notes:
+- `PermissionSeeder` will create `admin` and `user` roles and assign the first user the `admin` role if Spatie is available.
+- CI (GitHub Actions) is configured to run `composer install`, prepare an sqlite DB, run migrations & seeders, then `npm ci` and `npm run build`.
+
+
 <!-- TODOS-START -->
 
 
