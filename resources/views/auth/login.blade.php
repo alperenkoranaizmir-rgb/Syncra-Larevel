@@ -4,7 +4,7 @@
   <div class="login-box">
     <div class="login-logo text-center">
       <a href="/{{ url('/') }}">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAABh0RVh0Q3JlYXRpb24gVGltZQAwOC8xMS8xOQw2rN0AAABRSURBVHja7cEBAQAAAMKg909tDjegAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgGhgAAGnkQ9iAAAAAElFTkSuQmCC" alt="Syncra" class="brand-image img-circle elevation-3" style="opacity:.95;width:96px;height:96px;">
+        <img src="{{ asset('images/logo.png') }}" alt="Syncra" class="brand-image img-circle elevation-3" style="opacity:.95;width:96px;height:96px;">
       </a>
       <h3 class="mt-2"><b>Syncra</b></h3>
       <p class="text-muted small mb-0">Yönetim Paneli — Hoşgeldiniz</p>
