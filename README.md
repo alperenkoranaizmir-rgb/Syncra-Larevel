@@ -57,6 +57,24 @@ Gereksinimler (kısa):
 - **MySQL:** 8.x (sisteminizde MySQL 8.0.43 mevcut)
 - **Node / npm:** AdminLTE 3 için Node >= 14 tavsiye edilir; AdminLTE 4 (RC) için Node >= 16/18 tavsiye edilir.
 
+Kesin (Pinned) Sürümler — Bu proje için tam sabitlenmiş sürümler (değiştirilmeyecek):
+
+- **İşletim Sistemi:** Ubuntu 24.04 LTS
+- **PHP (CLI):** 8.3.6
+- **PHP yolu:** `/usr/bin/php8.3`
+- **MySQL:** 8.0.43
+- **Composer:** 2.9.1
+- **Laravel:** 12.10.1
+- **Node.js:** 18.20.1 (LTS)
+- **npm:** 9.8.1
+- **AdminLTE (frontend):** 4.0.0-rc3
+- **Bootstrap:** 5.3.7
+- **Bootstrap Icons:** 1.13.1
+- **OverlayScrollbars:** 2.11.0
+- **Laravel-AdminLTE (opsiyonel, sadece v3 kullanımı için):** jeroennoten/laravel-adminlte 3.15.2
+
+NOT: Bu sürümler proje gereği sabitlenecektir — `composer.json` ve `package.json` içinde belirtilen sürümlere sadık kalınacak ve `composer.lock` / `package-lock.json` repoya eklenecektir. Güvenlik yamaları özel süreçle ele alınacaktır.
+
 Laravel ile yaygın/önerilen paketler (ama zorunlu değil; proje gereksinimine göre seçilecek):
 - **Resmi Laravel paketleri:** `laravel/sanctum`, `laravel/telescope` (dev), `laravel/horizon` (kuyruklar için), `laravel/scout`, `laravel/octane` (performans, isteğe bağlı), `laravel/sail` (yerel geliştirme), `laravel/breeze` veya `laravel/jetstream` (auth scaffolding).
 - **Topluluk paketleri (admin/kurumsal ihtiyaçlar):** `jeroennoten/laravel-adminlte` (AdminLTE entegrasyonu, tavsiye edilen yol), `spatie/laravel-permission` (rol/izin yönetimi), `yajra/laravel-datatables` (büyük tablolar), `maatwebsite/excel` (Excel export/import), `barryvdh/laravel-dompdf` (PDF), `intervention/image` (görsel işleme), `spatie/laravel-activitylog` (loglama).
@@ -66,18 +84,19 @@ AdminLTE v4 entegrasyonu (kısa yol, Vite + npm ile Laravel 12 için)
 
 Not: Laravel 12 Vite varsayılan asset pipeline'ını kullanır. Aşağıdaki adımlar AdminLTE v4'ü (ör. `4.0.0-rc3`) doğrudan npm üzerinden projeye ekleyip Vite ile import ederek en kısa ve güvenilir entegrasyonu sağlar.
 
-1. Laravel 12 projesi oluşturun (varsa bu adımı atlayın):
 
-	composer create-project laravel/laravel:^12 syncra
+1. Laravel 12 projesi oluşturun (kesin sürüm kullanımı):
+
+	composer create-project laravel/laravel=12.10.1 syncra
 
 2. Node ve npm kurulumu ve kontrol (v4 RC için Node >=16/18 önerilir):
 
 	node -v
 	npm -v
 
-3. AdminLTE v4 ve gerekli frontend paketlerini yükleyin:
+3. AdminLTE v4 ve gerekli frontend paketlerini kesin sürümlerle yükleyin:
 
-	npm install admin-lte@4.0.0-rc3 bootstrap@5.3.7 bootstrap-icons overlay-scrollbars --save
+	npm install admin-lte@4.0.0-rc3 bootstrap@5.3.7 bootstrap-icons@1.13.1 overlay-scrollbars@2.11.0 --save
 
 4. Vite / Laravel varsayılan `resources/js/app.js` ve `resources/css/app.css` içine AdminLTE import'ları ekleyin.
 
@@ -92,9 +111,12 @@ Not: Laravel 12 Vite varsayılan asset pipeline'ını kullanır. Aşağıdaki ad
 	import 'admin-lte/dist/js/adminlte.min.js';
 	import '../css/app.css';
 
-5. `vite` ile asset'leri derleyin:
+5. `vite` ile asset'leri derleyin (kesin sürümlere göre):
 
+	# ilk kez: paketleri yükleyin (şimdiden exact sürümler package.json'a kaydolacaktır)
 	npm install
+
+	# development derlemesi
 	npm run build
 
 6. Blade layout'ınızda Vite tag'larını kullanın (Laravel 12 default):
@@ -105,11 +127,12 @@ Not: Laravel 12 Vite varsayılan asset pipeline'ını kullanır. Aşağıdaki ad
 
 AdminLTE v3 ile gelen `jeroennoten/laravel-adminlte` paketinin (Laravel-AdminLTE) avantajı hazır blade şablonları ve komutlarla hızlı entegrasyon sağlamasıdır; fakat bu paket AdminLTE v3.2 ile uyumludur. AdminLTE v4'ü kullanmak istiyorsanız v4'ü npm ile ekleyip (veya AdminLTE 4 kaynaklarını manuel olarak kopyalayarak) Vite üzerinden import etmek en doğrudan yoldur.
 
-AdminLTE v4 (RC) için özet gereksinimler:
-- Node: >= 16 / 18 (LTS önerilir)
-- npm veya pnpm/yarn
-- Bootstrap: 5.3.7
-- OverlayScrollbars, Bootstrap Icons vb. (yukarıdaki `npm install` komutunda eklenmiştir)
+AdminLTE v4 (RC) için özet gereksinimler (sabitlenmiş sürümler):
+- Node.js: `18.20.1`
+- npm: `9.8.1` (veya uyumlu pnpm/yarn sürümü)
+- Bootstrap: `5.3.7`
+- OverlayScrollbars: `2.11.0`
+- Bootstrap Icons: `1.13.1`
 
 Versiyon sabitleme ve yükseltme kısıtı (sizin isteğiniz):
 - Projede paket güncellemeleri yapılmayacaksa `composer.json` ve `package.json`'da versiyonları kesin şekilde kilitleyin ve `composer.lock` / `package-lock.json`'ı repoda tutun. AdminLTE v4 RC olduğundan, repoda tam sürüm etiketi (`4.0.0-rc3`) ile tutmak istenirse risk ve bakım sorumluluğu üstlenilmiş olur.
