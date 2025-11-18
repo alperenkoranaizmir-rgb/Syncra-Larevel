@@ -7,6 +7,7 @@
     <title>@yield('title', 'Admin Panel')</title>
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/admin.js'])
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
