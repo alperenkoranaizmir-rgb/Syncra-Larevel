@@ -20,7 +20,7 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="{{ url('/profile') }}" class="dropdown-item">Profil</a>
           <div class="dropdown-divider"></div>
-          <form method="POST" action="{{ route('logout') }}" class="px-3">
+          <form method="POST" action="{{ url('/logout') }}" class="px-3">
             @csrf
             <button type="submit" class="btn btn-sm btn-danger">Çıkış</button>
           </form>

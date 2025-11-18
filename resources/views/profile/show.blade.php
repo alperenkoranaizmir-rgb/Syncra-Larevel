@@ -23,7 +23,7 @@
       <tr><th>Eğitim</th><td>{{ $user->education }}</td></tr>
     </table>
     <div class="mt-3">
-      <a href="{{ route('profile.edit') }}" class="btn btn-primary">Profili Düzenle</a>
+      <a href="{{ url('/profile/edit') }}" class="btn btn-primary">Profili Düzenle</a>
     </div>
   </div>
 </div>
@@ -49,7 +49,7 @@
         <tr><th>Address</th><td>{{ $user->address_city }} / {{ $user->address_district }}<br>{{ $user->address_line }}</td></tr>
         <tr><th>Education</th><td>{{ $user->education }}</td></tr>
       </table>
-      <a href="{{ route('profile.edit') }}" class="btn btn-primary">Edit Profile</a>
+      <a href="{{ url('/profile/edit') }}" class="btn btn-primary">Edit Profile</a>
     </div>
   </div>
 </div>
