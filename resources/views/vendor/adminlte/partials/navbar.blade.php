@@ -18,7 +18,7 @@
           <img src="{{ Auth::user()->avatar ?? asset('vendor/adminlte/img/avatar.png') }}" class="img-circle" alt="avatar" style="width:28px;height:28px;object-fit:cover;margin-right:6px;"> {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="{{ route('profile.show') }}" class="dropdown-item">Profil</a>
+          <a href="{{ url('/profile') }}" class="dropdown-item">Profil</a>
           <div class="dropdown-divider"></div>
           <form method="POST" action="{{ route('logout') }}" class="px-3">
             @csrf

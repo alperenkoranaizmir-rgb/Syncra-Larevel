@@ -11,7 +11,7 @@
         <img src="{{ Auth::user()->avatar ?? asset('vendor/adminlte/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name ?? 'Misafir' }}</a>
+        <a href="{{ url('/profile') }}" class="d-block">{{ Auth::user()->name ?? 'Misafir' }}</a>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
         @endif
 
         <li class="nav-item">
-          <a href="{{ route('profile.show') }}" class="nav-link">
+          <a href="{{ url('/profile') }}" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
             <p>Profil</p>
           </a>

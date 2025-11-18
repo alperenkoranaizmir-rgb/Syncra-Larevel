@@ -69,7 +69,7 @@
       </div>
 
       <button class="btn btn-primary" type="submit">Kaydet</button>
-      <a href="{{ route('profile.show') }}" class="btn btn-secondary">İptal</a>
+      <a href="{{ url('/profile') }}" class="btn btn-secondary">İptal</a>
     </form>
   </div>
 </div>
