@@ -27,16 +27,7 @@
         </a>
 
         <div class="sidebar">
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            @include('vendor.adminlte.partials.sidebar')
         </div>
     </aside>
 
