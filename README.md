@@ -116,6 +116,13 @@ Notes:
 - `PermissionSeeder` will create `admin` and `user` roles and assign the first user the `admin` role if Spatie is available.
 - CI (GitHub Actions) is configured to run `composer install`, prepare an sqlite DB, run migrations & seeders, then `npm ci` and `npm run build`.
 
+User profile fields now include:
+- `tckn` (T.C. Kimlik No)
+- `phone` (Telefon)
+- `address_city`, `address_district`, `address_line` (Adres bilgileri)
+- `education` (Eğitim durumu — options: İlkokul, Ortaokul, Lise, Ön Lisans, Lisans, Yüksek Lisans, Doktora, MBA, Sertifika, Diğer)
+
+You can edit these fields via the profile page at `/profile/edit` after logging in.
 
 <!-- TODOS-START -->
 

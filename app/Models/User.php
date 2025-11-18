@@ -25,6 +25,12 @@ class User extends Authenticatable
         'company',
         'birthdate',
         'is_admin',
+        'tckn',
+        'phone',
+        'address_city',
+        'address_district',
+        'address_line',
+        'education',
     ];
 
     /**
@@ -49,6 +55,7 @@ class User extends Authenticatable
             'password' => 'hashed',
             'birthdate' => 'date',
             'is_admin' => 'boolean',
+            // note: address and other fields remain strings/text
         ];
     }
 }

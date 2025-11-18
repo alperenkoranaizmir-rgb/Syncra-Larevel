@@ -24,6 +24,12 @@ class AdminUserSeeder extends Seeder
                 'password' => Hash::make('benq2535Aa.'),
                 'company' => 'Korana Yazılım',
                 'birthdate' => '1988-03-16',
+                'tckn' => null,
+                'phone' => null,
+                'address_city' => null,
+                'address_district' => null,
+                'address_line' => null,
+                'education' => null,
                 'is_admin' => true,
             ]);
         } else {
@@ -31,6 +37,12 @@ class AdminUserSeeder extends Seeder
                 'username' => 'admin',
                 'company' => 'Korana Yazılım',
                 'birthdate' => '1988-03-16',
+                'tckn' => null,
+                'phone' => null,
+                'address_city' => null,
+                'address_district' => null,
+                'address_line' => null,
+                'education' => null,
                 'is_admin' => true,
             ]);
         }
