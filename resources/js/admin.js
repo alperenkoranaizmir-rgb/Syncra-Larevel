@@ -15,29 +15,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 const ajaxUrl = $el.data('ajax-url');
 
                 if (ajaxUrl) {
-                    $el.select2({
-                        width: '100%',
-                        placeholder: $el.data('placeholder') || 'Roller seçin (isteğe bağlı)',
-                        minimumInputLength: 1,
-                        ajax: {
-                            url: ajaxUrl,
-                            dataType: 'json',
-                            delay: 250,
-                            data: function (params) {
-                                return {
-                                    q: params.term,
-                                    page: params.page || 1
-                                };
-                            },
-                            processResults: function (data, params) {
-                                params.page = params.page || 1;
-                                return {
-                                    results: data.results || [],
-                                    pagination: { more: data.pagination ? data.pagination.more : false }
-                                };
-                            },
-                        }
-                    });
+                    // If a preload URL is provided, fetch current selections first
+                    const preloadUrl = $el.data('preload-url');
+                    const initSelect2 = function () {
+                        $el.select2({
+                            width: '100%',
+                            placeholder: $el.data('placeholder') || 'Roller seçin (isteğe bağlı)',
+                            minimumInputLength: 1,
+                            ajax: {
+                                url: ajaxUrl,
+                                dataType: 'json',
+                                delay: 250,
+                                data: function (params) {
+                                    return {
+                                        q: params.term,
+                                        page: params.page || 1
+                                    };
+                                },
+                                processResults: function (data, params) {
+                                    params.page = params.page || 1;
+                                    return {
+                                        results: data.results || [],
+                                        pagination: { more: data.pagination ? data.pagination.more : false }
+                                    };
+                                },
+                            }
+                        });
+                    };
+
+                    if (preloadUrl) {
+                        // fetch preselected items, add them as options, then init select2
+                        $.ajax({ url: preloadUrl, dataType: 'json' }).done(function (data) {
+                            if (data && data.results && data.results.length) {
+                                data.results.forEach(function (it) {
+                                    // create the option and mark as selected
+                                    const option = new Option(it.text, it.id, true, true);
+                                    $el.append(option);
+                                });
+                            }
+                            initSelect2();
+                        }).fail(function () {
+                            // fallback: init without preloaded items
+                            initSelect2();
+                        });
+                    } else {
+                        initSelect2();
+                    }
                 } else {
                     // simple local init
                     $el.select2({

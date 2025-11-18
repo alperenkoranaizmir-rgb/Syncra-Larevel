@@ -40,4 +40,6 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
 
     // Roles search for Select2 AJAX
     Route::get('roles/search', [App\Http\Controllers\Admin\RoleController::class, 'search'])->name('admin.roles.search');
+    // User roles for preselection
+    Route::get('users/{user}/roles', [App\Http\Controllers\Admin\RoleController::class, 'userRoles'])->name('admin.users.roles');
 });

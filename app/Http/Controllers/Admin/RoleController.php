@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class RoleController extends Controller
 {
@@ -31,5 +32,18 @@ class RoleController extends Controller
             'results' => $items,
             'pagination' => ['more' => ($page*$perPage) < $total],
         ]);
+    }
+
+    // Return roles for a given user in Select2 format
+    public function userRoles(User $user)
+    {
+        $items = collect([]);
+        if (method_exists($user, 'getRoleNames')) {
+            $items = $user->getRoleNames()->map(function ($r) {
+                return ['id' => $r, 'text' => $r];
+            })->values();
+        }
+
+        return response()->json(['results' => $items]);
     }
 }
