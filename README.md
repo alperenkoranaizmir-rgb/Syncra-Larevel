@@ -1,160 +1,59 @@
-# Syncra CRM V1.0
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-**Proje:** Syncra System CRM ERP otomasyonu
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-**Programın adı:** Syncra CRM V1.0
+## About Laravel
 
-**Yazılımcı firma:** KORANA YAZILIM
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-**Yazar:** alperen korana
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-**İletişim:**
-- GSM: 0.551 344 24 40
-- Mail: alperen.korana@outlook.com
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Bu depo Laravel tabanlı Syncra CRM V1.0 uygulamasının kaynak kodunu içerir.
+## Learning Laravel
 
-Notlar:
-- Push işlemleri `https://github.com/alperenkoranaizmir-rgb/Syncra-Larevel.git` uzak reposuna yapılacaktır.
-- `.env` dosyası versiyon kontrolüne eklenmemelidir — çevresel değişkenleri yerel `.env` dosyanıza ekleyin.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
 
-Kurulum (özet):
-1. `composer install`
-2. `cp .env.example .env` ve gerekli yapılandırmayı yapın
-3. `php artisan key:generate`
-4. `php artisan migrate --seed`
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-Geliştirici notu: Bu repo'ya ilk push yerel commitleri uzak `main` branşına göndermeye çalışacaktır.
+## Laravel Sponsors
 
-Sistem / Geliştirme Ortamı (kaydedildi):
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-- **İşletim Sistemi:** Ubuntu 24.04/24.3 (kullanıcı bildirimi)
-- **PHP (CLI):** PHP 8.3.6 (cli) (built: Jul 14 2025 18:30:55) (NTS)
-- **PHP yolu:** `/usr/bin/php8.3`
-- **MySQL:** mysql  Ver 8.0.43-0ubuntu0.24.04.2 for Linux on x86_64 ((Ubuntu))
-- **Composer:** Composer version 2.9.1 2025-11-13 16:10:38
+### Premium Partners
 
-Bu bilgiler isteğiniz üzerine README içine eklendi ve proje ortamı referansı olarak kaydedildi.
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
-Veritabanı Bilgileri (isteğiniz üzerine - dikkat: hassas bilgi):
+## Contributing
 
-- **Database adı:** `syncra`
-- **Database kullanıcı adı:** `syncra`
-- **Db parolası:** "benq2535Aa."
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-UYARI: Bu bilgiler hassas bilgidir. Versiyon kontrolünde gerçek parolaların paylaşılmaması güvenlik açısından önemlidir. Bu depoya erişimi olan kişiler bu bilgiyi görebilir. Tavsiye: üretim parolalarını uzak repoya commit etmeyin; bunun yerine `.env` dosyanızı sunucuda veya güvenli bir yerel ortamda saklayın. Aşağıda proje kökünde bir örnek `.env.example` dosyası da oluşturuldu.
+## Code of Conduct
 
-Proje Teknoloji ve Paket Önerileri (özet)
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-Not: Aşağıdaki öneriler en stabil, yaygın kullanılan ve uzun süreli destek gören kombinasyonlara dayanır (2025 Kasım sonu itibarıyla yapılan kontrol). "En kısa yol" olarak Laravel 12 + `jeroennoten/laravel-adminlte` (AdminLTE v3.2) kombinasyonunu öneriyorum — bu yol kurulumu en kolay ve kararlı çalışacak seçenektir.
+## Security Vulnerabilities
 
-- **Laravel sürümü (önerilen, kararlı):** Laravel 12.x (ör. `v12.10.1`) — gereksinim: `php ^8.2` (Sizde PHP 8.3.6 var, uyumlu).
-- **Admin panel (önerilen):** AdminLTE v4 (modern Bootstrap 5 tabanlı). AdminLTE v4 (ör. `4.0.0-rc3`) modern araç zinciri ve yeni bileşenlerle geliyor. Not: v4 halen rc/beta sürüm döngüsünde olabileceğinden, eğer mutlak en stabil (uzun süreli LTS) tercih isterseniz AdminLTE v3.2'yi seçebilirsiniz. Ancak siz v4 istediniz; aşağıda v4 için kısa ve çalışır kurulum adımlarını bulabilirsiniz.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-Gereksinimler (kısa):
-- **PHP:** >= 8.2 (sisteminizde PHP 8.3.6 mevcut)
-- **Composer:** Composer 2.x (sisteminizde Composer 2.9.1 mevcut)
-- **MySQL:** 8.x (sisteminizde MySQL 8.0.43 mevcut)
-- **Node / npm:** AdminLTE 3 için Node >= 14 tavsiye edilir; AdminLTE 4 (RC) için Node >= 16/18 tavsiye edilir.
+## License
 
-Kesin (Pinned) Sürümler — Bu proje için tam sabitlenmiş sürümler (değiştirilmeyecek):
-
-- **İşletim Sistemi:** Ubuntu 24.04 LTS
-- **PHP (CLI):** 8.3.6
-- **PHP yolu:** `/usr/bin/php8.3`
-- **MySQL:** 8.0.43
-- **Composer:** 2.9.1
-- **Laravel:** 12.10.1
-- **Node.js:** 18.20.1 (LTS)
-- **npm:** 9.8.1
-- **AdminLTE (frontend):** 4.0.0-rc3
-- **Bootstrap:** 5.3.7
-- **Bootstrap Icons:** 1.13.1
-- **OverlayScrollbars:** 2.11.0
-- **Laravel-AdminLTE (opsiyonel, sadece v3 kullanımı için):** jeroennoten/laravel-adminlte 3.15.2
-
-NOT: Bu sürümler proje gereği sabitlenecektir — `composer.json` ve `package.json` içinde belirtilen sürümlere sadık kalınacak ve `composer.lock` / `package-lock.json` repoya eklenecektir. Güvenlik yamaları özel süreçle ele alınacaktır.
-
-Laravel ile yaygın/önerilen paketler (ama zorunlu değil; proje gereksinimine göre seçilecek):
-- **Resmi Laravel paketleri:** `laravel/sanctum`, `laravel/telescope` (dev), `laravel/horizon` (kuyruklar için), `laravel/scout`, `laravel/octane` (performans, isteğe bağlı), `laravel/sail` (yerel geliştirme), `laravel/breeze` veya `laravel/jetstream` (auth scaffolding).
-- **Topluluk paketleri (admin/kurumsal ihtiyaçlar):** `jeroennoten/laravel-adminlte` (AdminLTE entegrasyonu, tavsiye edilen yol), `spatie/laravel-permission` (rol/izin yönetimi), `yajra/laravel-datatables` (büyük tablolar), `maatwebsite/excel` (Excel export/import), `barryvdh/laravel-dompdf` (PDF), `intervention/image` (görsel işleme), `spatie/laravel-activitylog` (loglama).
-- **Geliştirici / araç paketleri (opsiyonel):** `barryvdh/laravel-debugbar` (dev), `nunomaduro/pint` (kod formatlama), `pestphp/pest` veya `phpunit` (testler), `orchestra/testbench` (paket testi).
-
-AdminLTE v3 entegrasyonu (kısa yol, Laravel 12 ile, kesin sürümler)
-
-Not: Bu proje için kesin tercih AdminLTE v3.2.0'dır. Aşağıdaki adımlar Laravel 12 ile sorunsuz çalışacak şekilde hazırlanmıştır ve `jeroennoten/laravel-adminlte` paketini kullanarak blade şablonlarıyla hızlı entegrasyon sağlar.
-
-1. Laravel 12 projesi oluşturun (kesin sürüm kullanımı):
-
-   composer create-project laravel/laravel=12.10.1 syncra
-
-2. Gerekli PHP/Composer ayarlarını doğrulayın (sisteminizde zaten uyumlu PHP 8.3.6 ve Composer 2.9.1 bulunuyor).
-
-3. `jeroennoten/laravel-adminlte` paketini kesin sürüm ile ekleyin (bu paket `almasaeed2010/adminlte` 3.2.* bağımlılığını çekecektir):
-
-   composer require jeroennoten/laravel-adminlte=3.15.2
-
-   (Eğer isterseniz adminlte paketini doğrudan pin'leyebilirsiniz: `composer require almasaeed2010/adminlte=3.2.0`)
-
-4. Paket yapılandırmasını ve view'leri yayınlayın:
-
-   php artisan vendor:publish --provider="JeroenNoten\\LaravelAdminLte\\ServiceProvider" --tag=config
-   php artisan vendor:publish --tag=adminlte --force
-
-5. Frontend (assets) için kesin sürümleri yükleyin (AdminLTE v3 kullandığı bootstrap4 + jquery tabanlıdır):
-
-   npm install bootstrap@4.6.0 jquery@3.6.0 overlay-scrollbars@1.13.1 --save
-
-6. `resources/js/app.js` ve `resources/sass/app.scss` (veya `resources/css/app.css`) içine gerekli import'ları ekleyin. Örnek:
-
-   resources/js/app.js
-   --------------------------------
-   import 'jquery';
-   import 'bootstrap';
-   import 'overlayscrollbars';
-   import '../sass/app.scss';
-
-   resources/sass/app.scss
-   --------------------------------
-   @import "~admin-lte/dist/css/adminlte.min.css";
-
-7. Asset'leri derleyin:
-
-   npm install
-   npm run build
-
-8. Blade layout'unuzu `layouts` dizininde AdminLTE yapılarına göre ayarlayın; `jeroennoten/laravel-adminlte` paket dokümantasyonundaki blade örneklerini kullanın.
-
-AdminLTE v3 (stable) için özet sabitlenmiş sürümler:
-- AdminLTE: `3.2.0`
-- jeroennoten/laravel-adminlte: `3.15.2`
-- Bootstrap: `4.6.0`
-- jQuery: `3.6.0`
-- OverlayScrollbars: `1.13.1`
-- Node.js: `18.20.1` (uyumluluk için; npm 9.8.1)
-
-Versiyon sabitleme politikası:
-- `composer.json` ve `package.json`'da yukarıdaki exact sürümleri kullanın ve `composer.lock` ile `package-lock.json` dosyalarını repoya ekleyin. Paket güncellemeleri otomatik yapılmayacak; güvenlik yamaları gerektiğinde ayrı süreçle uygulanacaktır.
-
-Detaylı paket/dökümantasyon bağlantıları:
-- Laravel docs: https://laravel.com/docs/12.x
-- Laravel-AdminLTE docs: https://jeroennoten.github.io/Laravel-AdminLTE/
-- AdminLTE (v3) docs/examples: https://adminlte.io/themes/v3/
-
-
-<!-- TODOS-START -->
-
-
-**Project Status (otomatik)**
-
-# İş Listesi (Otomatik)
-
-Bu dosya `todo.json` kaynağından otomatik olarak üretilmektedir. `scripts/update_todos.py` veya git hook tarafından güncellenir.
-
-- [x] **1. Switch README to AdminLTE v3** - Replace AdminLTE v4 content with AdminLTE v3.2.0 (pinned) instructions; commit and push.
-- [x] **2. Add automation scripts** - Create scripts/update_todos.py and todo.json to generate Is_listesi.md and update README automatically from the todo file.
-- [ ] **3. Install git hooks** - Add githooks/post-commit and scripts/install-hooks.sh to install hook that runs update script after commits.
-- [x] **4. Verify automation** - Trigger a sample todo change to confirm Is_listesi.md and README update automatically and commit automated changes.
-
-
-<!-- TODOS-END -->
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
