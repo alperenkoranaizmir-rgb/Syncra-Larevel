@@ -23,11 +23,5 @@
     "description": "Trigger a sample todo change to confirm Is_listesi.md and README update automatically and commit automated changes.",
     "status": "completed"
   }
-  ,
-  {
-    "id": 5,
-    "title": "Temp: trigger hook test",
-    "description": "Temporary task added to test post-commit hook automatic updates.",
-    "status": "not-started"
-  }
+
 ]
