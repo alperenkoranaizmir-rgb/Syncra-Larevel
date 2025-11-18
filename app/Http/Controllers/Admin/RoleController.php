@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+
+class RoleController extends Controller
+{
+    // Search endpoint for Select2 AJAX
+    public function search(Request $request)
+    {
+        $q = $request->input('q', '');
+        $page = max(1, (int) $request->input('page', 1));
+        $perPage = 20;
+
+        $query = Role::query();
+        if (!empty($q)) {
+            $query->where('name', 'like', "%{$q}%");
+        }
+
+        $total = $query->count();
+        $results = $query->orderBy('name')->skip(($page-1)*$perPage)->take($perPage)->get();
+
+        $items = $results->map(function ($r) {
+            return ['id' => $r->name, 'text' => $r->name];
+        })->values();
+
+        return response()->json([
+            'results' => $items,
+            'pagination' => ['more' => ($page*$perPage) < $total],
+        ]);
+    }
+}

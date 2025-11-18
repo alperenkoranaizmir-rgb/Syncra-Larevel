@@ -37,4 +37,7 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::get('calendar/events/{id}', [App\Http\Controllers\Admin\CalendarController::class, 'show'])->name('admin.calendar.events.show');
     Route::put('calendar/events/{id}', [App\Http\Controllers\Admin\CalendarController::class, 'update'])->name('admin.calendar.events.update');
     Route::delete('calendar/events/{id}', [App\Http\Controllers\Admin\CalendarController::class, 'destroy'])->name('admin.calendar.events.destroy');
+
+    // Roles search for Select2 AJAX
+    Route::get('roles/search', [App\Http\Controllers\Admin\RoleController::class, 'search'])->name('admin.roles.search');
 });

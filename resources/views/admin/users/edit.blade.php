@@ -21,7 +21,7 @@
       @if(!empty($roles))
         <div class="form-group">
           <label>Roller</label>
-          <select name="roles[]" class="form-control roles-select" multiple>
+          <select name="roles[]" class="form-control roles-select" multiple data-ajax-url="{{ url('/admin/roles/search') }}" data-placeholder="Roller seçin">
             @foreach($roles as $r)
               <option value="{{ $r }}" {{ (method_exists($user, 'getRoleNames') && $user->getRoleNames()->contains($r)) || in_array($r, old('roles', [])) ? 'selected' : '' }}>{{ $r }}</option>
             @endforeach
@@ -65,7 +65,7 @@
         </div>
         <div class="form-group">
           <label>Kullanıcı Rol(ler)i</label>
-          <select name="roles[]" class="form-control" multiple>
+          <select name="roles[]" class="form-control roles-select" multiple data-ajax-url="{{ url('/admin/roles/search') }}" data-placeholder="Roller seçin">
             @foreach($roles as $r)
               <option value="{{ $r }}" @if(in_array($r, $user->roles->pluck('name')->toArray())) selected @endif>{{ $r }}</option>
             @endforeach
