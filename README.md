@@ -35,3 +35,11 @@ Sistem / Geliştirme Ortamı (kaydedildi):
 - **Composer:** Composer version 2.9.1 2025-11-13 16:10:38
 
 Bu bilgiler isteğiniz üzerine README içine eklendi ve proje ortamı referansı olarak kaydedildi.
+
+Veritabanı Bilgileri (isteğiniz üzerine - dikkat: hassas bilgi):
+
+- **Database adı:** `syncra`
+- **Database kullanıcı adı:** `syncra`
+- **Db parolası:** "benq2535Aa."
+
+UYARI: Bu bilgiler hassas bilgidir. Versiyon kontrolünde gerçek parolaların paylaşılmaması güvenlik açısından önemlidir. Bu depoya erişimi olan kişiler bu bilgiyi görebilir. Tavsiye: üretim parolalarını uzak repoya commit etmeyin; bunun yerine `.env` dosyanızı sunucuda veya güvenli bir yerel ortamda saklayın. Aşağıda proje kökünde bir örnek `.env.example` dosyası da oluşturuldu.
