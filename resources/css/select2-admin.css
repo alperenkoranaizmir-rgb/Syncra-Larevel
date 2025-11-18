@@ -1,0 +1,30 @@
+/* Select2 tweaks to better match AdminLTE / Bootstrap 4 look */
+.select2-container--default .select2-selection--multiple {
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  padding: .375rem .5rem;
+  min-height: calc(1.5em + .75rem + 2px);
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #007bff;
+  border: 1px solid #0069d9;
+  color: #fff;
+  padding: .2rem .4rem;
+  margin-top: .125rem;
+}
+.select2-container--default .select2-selection--single {
+  height: calc(1.5em + .75rem + 2px);
+  line-height: 1.5;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #495057;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: calc(1.5em + .75rem + 2px);
+}
+
+/* small adjustments for placeholder and search box */
+.select2-container--default .select2-search--inline .select2-search__field {
+  height: 1.5em;
+}
