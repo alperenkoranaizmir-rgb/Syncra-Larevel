@@ -10,6 +10,11 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'user');
+    }
+
     public function index()
     {
         $users = User::with('roles')->paginate(20);

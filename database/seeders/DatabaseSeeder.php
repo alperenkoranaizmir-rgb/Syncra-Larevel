@@ -25,5 +25,15 @@ class DatabaseSeeder extends Seeder
         if (class_exists(\Database\Seeders\PermissionSeeder::class)) {
             $this->call(\Database\Seeders\PermissionSeeder::class);
         }
+        
+        // Create admin user
+        if (class_exists(\Database\Seeders\AdminUserSeeder::class)) {
+            $this->call(\Database\Seeders\AdminUserSeeder::class);
+        }
+
+        // Seed sample events for calendar
+        if (class_exists(\Database\Seeders\EventSeeder::class)) {
+            $this->call(\Database\Seeders\EventSeeder::class);
+        }
     }
 }
