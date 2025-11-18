@@ -140,6 +140,39 @@ User profile fields now include:
 
 You can edit these fields via the profile page at `/profile/edit` after logging in.
 
+## Admin Arayüzü Geliştirme (Hızlı Yol Haritası)
+
+Aşağıda admin panelini tam anlamıyla AdminLTE şablonuna geçirip kullanıcı yönetimi ve profil sayfalarını tamamlamak için adımlar yer alıyor. Bu repo üzerinde ben veya siz bu adımları takip ederek ilerleyebilirsiniz.
+
+- 1) AdminLTE varlıklarını hazırlayın:
+	- `public/vendor/adminlte` içine AdminLTE `dist` dosyalarını (css/js/img) kopyalayın veya `npm` ile paketleyin.
+	- Eğer Vite kullanıyorsanız `vite.config.js` ve `resources/js/app.js` içinde admin varlıklarını bundle edin.
+
+- 2) Layout ve partial dosyaları:
+	- `resources/views/layouts/admin.blade.php` oluşturun ve AdminLTE tam şablonunu buraya taşıyın (header, sidebar, footer, control-sidebar).
+	- `resources/views/vendor/adminlte/partials` altında `navbar.blade.php`, `sidebar.blade.php`, `footer.blade.php` dosyalarını ekleyin.
+
+- 3) Header (navbar) güncelleme:
+	- Oturum açmış kullanıcı bilgisini (`Auth::user()`) gösterin.
+	- Çıkış (logout) butonunu yerleştirin ve POST `/logout` route'unu kullanın.
+
+- 4) Sidebar menü öğeleri:
+	- `config/adminlte.php` veya `layouts/admin.blade.php` içinden menü öğelerini doldurun (Dashboard, Users, Profile, Calendar, Settings...).
+
+- 5) Profil sayfaları:
+	- GET `/profile` — profil görüntüleme.
+	- GET `/profile/edit` — profil düzenleme formu.
+	- POST/PUT `/profile` — güncelleme ve validasyon.
+
+- 6) Kullanıcı yönetimi (Admin):
+	- Resource controller: `App\Http\Controllers\Admin\UserController` (index, create, store, show, edit, update, destroy).
+	- Admin yetkileri: `Admin` rolü kontrolü (Spatie veya `is_admin` fallback).
+
+- 7) Test & doğrulama:
+	- Oturum açma, profil güncelleme, kullanıcı CRUD ve takvim sayfası akışlarını test edin.
+
+Her adım için isterseniz ben dosya şablonlarını oluşturup, route ve controller kodunu yazabilirim. Hangi adımla başlamamı istersiniz? (örn. `layouts/admin` şablonunu oluşturayım ve navbar/sidebar'ı ekleyeyim)
+
 <!-- TODOS-START -->
 
 
