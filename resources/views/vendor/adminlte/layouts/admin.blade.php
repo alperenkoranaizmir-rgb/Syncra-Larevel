@@ -9,6 +9,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
+    @auth
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <ul class="navbar-nav">
@@ -30,6 +31,7 @@
             @include('vendor.adminlte.partials.sidebar')
         </div>
     </aside>
+    @endauth
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -44,6 +46,7 @@
         </div>
         <strong>&copy; {{ date('Y') }} <a href="#">{{ config('app.name') }}</a>.</strong> All rights reserved.
     </footer>
+    @stack('scripts')
 
 </div>
 </body>

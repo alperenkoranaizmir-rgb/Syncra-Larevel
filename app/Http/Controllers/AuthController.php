@@ -12,6 +12,9 @@ class AuthController extends Controller
 {
     public function showLogin()
     {
+        if (Auth::check()) {
+            return redirect('/');
+        }
         return view('auth.login');
     }
 
@@ -40,6 +43,9 @@ class AuthController extends Controller
 
     public function showForgot()
     {
+        if (Auth::check()) {
+            return redirect('/');
+        }
         return view('auth.forgot');
     }
 
@@ -52,6 +58,9 @@ class AuthController extends Controller
 
     public function showReset($token)
     {
+        if (Auth::check()) {
+            return redirect('/');
+        }
         return view('auth.reset', ['token' => $token]);
     }
 

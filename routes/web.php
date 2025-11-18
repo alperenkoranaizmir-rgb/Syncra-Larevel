@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->middleware('auth');
 
 // Authentication
 Route::get('login', [AuthController::class, 'showLogin'])->name('login');
