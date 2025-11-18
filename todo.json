@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Switch README to AdminLTE v3",
+    "description": "Replace AdminLTE v4 content with AdminLTE v3.2.0 (pinned) instructions; commit and push.",
+    "status": "completed"
+  },
+  {
+    "id": 2,
+    "title": "Add automation scripts",
+    "description": "Create scripts/update_todos.py and todo.json to generate Is_listesi.md and update README automatically from the todo file.",
+    "status": "in-progress"
+  },
+  {
+    "id": 3,
+    "title": "Install git hooks",
+    "description": "Add githooks/post-commit and scripts/install-hooks.sh to install hook that runs update script after commits.",
+    "status": "not-started"
+  },
+  {
+    "id": 4,
+    "title": "Verify automation",
+    "description": "Trigger a sample todo change to confirm Is_listesi.md and README update automatically and commit automated changes.",
+    "status": "not-started"
+  }
+]

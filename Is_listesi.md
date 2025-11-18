@@ -1,22 +1,30 @@
-# İş Listesi (Görevler)
+# İş Listesi (Otomatik)
 
-Bu dosya, yapılacak işler için merkezi TODO listesidir. Her işin başına kısa bir açıklama ekleyin; işlem tamamlandığında satırı GitHub flavoured markdown checkbox olarak işaretleyin.
+Bu dosya `todo.json` kaynağından otomatik olarak üretilmektedir. `scripts/update_todos.py` veya `githooks/post-commit` hook'u tarafından güncellenir.
 
-Kullanım örneği:
+Mevcut görevler:
 
-- [ ] 1. Laravel 12 kurulumu
-- [ ] 2. `jeroennoten/laravel-adminlte` kur ve yapılandır
-- [ ] 3. Veritabanı `syncra` oluştur ve `.env` ayarla
-- [ ] 4. İlk kullanıcı (admin) oluştur
-- [ ] 5. Modüller: Müşteri, Satış, Stok, Fatura — her modül ayrı iş olarak eklenir
+- [x] **1. Switch README to AdminLTE v3** - Replace AdminLTE v4 content with AdminLTE v3.2.0 (pinned) instructions; commit and push.
+- [ ] **2. Add automation scripts** - Create `scripts/update_todos.py` and `todo.json` to generate `Is_listesi.md` and update README automatically from the todo file.
+- [ ] **3. Install git hooks** - Add `githooks/post-commit` and `scripts/install-hooks.sh` to install hook that runs update script after commits.
+- [ ] **4. Verify automation** - Trigger a sample todo change to confirm `Is_listesi.md` and README update automatically and commit automated changes.
 
-Kurallar:
-- Her yeni iş maddesi eklenmeden önce bir satır olarak bu dosyaya eklenmelidir.
-- Bir işi başlatmadan önce ilgili satırı `[ ]` (boş) olarak bırakın ve başlandığında not ekleyin.
-- İş tamamlandığında satırı `- [x]` ile işaretleyin.
+Kurulum ve kullanım:
 
-Örnek tamamlanma kaydı:
-- [x] 1. Proje repo oluşturuldu ve temel dosyalar eklendi
-- [x] 2. `.gitignore`, `README.md`, `.env.example` eklendi
+1. Hooks'ları kurmak için proje kökünde çalıştırın:
 
-NOT: Bu dosyayı repoda tutun; proje ilerledikçe her değişiklik buradan takip edilecek.
+```bash
+bash scripts/install-hooks.sh
+```
+
+2. Manuel olarak güncellemek isterseniz veya hook'u test etmek için:
+
+```bash
+python3 scripts/update_todos.py
+```
+
+3. `todo.json` dosyasını düzenleyerek görevleri ekleyin / güncelleyin. Değişiklik yaptıktan sonra `scripts/update_todos.py` veya commit sonrası hook otomatik güncelleme yapacaktır.
+
+Notlar:
+- Otomasyon, `Is_listesi.md` ve `README.md` içindeki `<!-- TODOS-START -->` / `<!-- TODOS-END -->` işaretleri arasını günceller. Eğer README'de bu işaretler yoksa otomatik olarak sonuna ekler.
+- Otomatik commitler `Automated: ...` mesajı ile yapılır; hook kendini tetiklememesi için bu mesajla başlayan commit'ler sırasında işlem yapmaz.

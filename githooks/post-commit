@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Avoid recursion: if last commit was made by the automation, skip
+last_msg=$(git log -1 --pretty=%B)
+case "$last_msg" in
+  Automated:*)
+    exit 0
+    ;;
+esac
+
+# Run the update script
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+python3 "$ROOT_DIR/scripts/update_todos.py"
+
+# If files changed, commit them with a distinct message so the hook can skip recursion
+if [ -n "$(git status --porcelain)" ]; then
+  git add Is_listesi.md README.md || true
+  git commit -m "Automated: update Is_listesi.md and README" || true
+fi
