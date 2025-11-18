@@ -28,5 +28,6 @@ Route::middleware('auth')->group(function () {
 // Admin routes group using admin middleware
 Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
     Route::get('/', function () { return view('vendor.adminlte.dashboard.index'); });
-    Route::get('/users', function () { return 'Users list (protected)'; });
+    // Admin users management
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class, ['as' => 'admin']);
 });
