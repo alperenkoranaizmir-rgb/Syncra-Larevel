@@ -22,3 +22,9 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Ignore copied AdminLTE dist (we build assets instead of committing them)
+public/vendor/adminlte
+
+# Lockfile from npm (optional to ignore if you prefer package-lock committed)
+package-lock.json
