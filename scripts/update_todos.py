@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import json
+#!/usr/bin/env python3
+import json
 from pathlib import Path
 import sys
 
@@ -14,8 +16,7 @@ def load_todos():
 
 def render_md(todos):
     lines = [
-        '# İş Listesi (Otomatik)
-',
+        '# İş Listesi (Otomatik)\n',
         'Bu dosya `todo.json` kaynağından otomatik olarak üretilmektedir. `scripts/update_todos.py` veya git hook tarafından güncellenir.',
         ''
     ]
